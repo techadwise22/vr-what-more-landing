@@ -1,0 +1,29 @@
+{
+  "name": "vr-what-more-landing",
+  "version": "1.0.0",
+  "description": "VR What More - Join the More Movement Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000",
+    "build": "echo 'Static site - no build required'",
+    "start": "live-server --port=3000",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "landing-page",
+    "vijay-raja",
+    "professional-growth",
+    "networking"
+  ],
+  "author": "Vijay Raja",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 

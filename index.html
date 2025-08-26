@@ -1,0 +1,3318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join the exclusive VR What More community. Experience exponential growth with the right people, in the right place, at the right time.">
+    <meta name="keywords" content="Vijay Raja, professional growth, networking, business development, leadership">
+    <meta name="author" content="Vijay Raja">
+    <title>VR What More - Join the More Movement</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKNZ4W9DFQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-YKNZ4W9DFQ');
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Luxury Design System - Consistent Color Palette */
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #d4af37;
+            --accent-light: #f4e4bc;
+            --accent-dark: #b8941f;
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --gradient-primary: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+            --gradient-soft: linear-gradient(135deg, #f4e4bc 0%, #ffe5b4 50%, #f4e4bc 100%);
+            --gradient-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            --gradient-cta: linear-gradient(135deg, #d4af37 0%, #f4e4bc 30%, #d4af37 70%, #b8941f 100%);
+            --gradient-shimmer: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.15);
+            --shadow-large: 0 16px 64px rgba(0, 0, 0, 0.2);
+            --shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.3);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography Consistency */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+
+        p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* Enhanced CTA Buttons with Gold Gradient Shimmer */
+        .cta-button, .hero-cta, .next-button, .submit-button {
+            background: var(--gradient-cta);
+            background-size: 200% 100%;
+            color: var(--primary);
+            border: none;
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .cta-button::before, .hero-cta::before, .next-button::before, .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-shimmer);
+            transition: left var(--transition-slow);
+        }
+
+        .cta-button:hover::before, .hero-cta:hover::before, .next-button:hover::before, .submit-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover, .hero-cta:hover, .next-button:hover, .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.4);
+            background-position: 100% 0;
+        }
+
+        .cta-button:active, .hero-cta:active, .next-button:active, .submit-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Header with Consistent Styling */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .cta-button {
+            background: var(--gradient-soft);
+            color: #8B4513;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: #0D0D0D;
+            overflow: hidden;
+            padding: 120px 0;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
+            opacity: 0.3;
+            animation: subtle-glow 15s infinite alternate;
+        }
+
+        @keyframes subtle-glow {
+            0% { opacity: 0.3; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(1.05); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            width: 100%;
+            padding: 40px 20px;
+        }
+
+        .hero-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 72px);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+            padding: 20px 0;
+            position: relative;
+            overflow: visible;
+        }
+
+        .hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        /* Hero CTA Container */
+        .hero-cta-container {
+            margin-top: 0;
+        }
+
+        .hero-cta {
+            background: var(--gradient-soft);
+            color: #8B4513;
+            border: none;
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .hero-cta:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Progress Section */
+        .progress-section {
+            margin-top: 40px;
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        /* Teaser Container */
+        .teaser-container {
+            min-height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cycling-text {
+            position: relative;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .teaser-phrase {
+            position: absolute;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.02em;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: all 0.8s ease;
+            text-align: center;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        .teaser-phrase.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .teaser-phrase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            animation: textShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes textShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* Progress Container */
+        .progress-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+            width: 0%;
+            position: relative;
+            transition: width 0.3s ease;
+        }
+
+        .progress-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: progressShimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes progressShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .progress-percentage {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+        }
+
+        /* Three-Step Growth Path */
+        .growth-path {
+            padding: 120px 0;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .growth-path::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.02) 0%, transparent 60%);
+            animation: subtleBackground 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes subtleBackground {
+            0% { background-position: 0% 0%, 100% 100%; }
+            100% { background-position: 100% 100%, 0% 0%; }
+        }
+
+        .growth-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .growth-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 8vw, 48px);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .growth-headline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            animation: headlineShimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes headlineShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .growth-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 80px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Process Cards */
+        .process-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .process-card {
+            background: var(--secondary);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .process-card[data-step="1"] { animation-delay: 0.3s; }
+        .process-card[data-step="2"] { animation-delay: 0.6s; }
+        .process-card[data-step="3"] { animation-delay: 0.9s; }
+
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .process-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .card-icon {
+            margin-bottom: 20px;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .process-card:hover .card-icon {
+            color: var(--accent-light);
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            text-align: center;
+        }
+
+        .card-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .card-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .process-connector {
+            color: var(--accent);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+            animation: connectorPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes connectorPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .growth-headline {
+                font-size: clamp(32px, 8vw, 40px);
+                margin-bottom: 20px;
+            }
+            
+            .growth-subtitle {
+                font-size: 16px;
+                margin-bottom: 60px;
+            }
+            
+            .process-cards {
+                gap: 30px;
+            }
+            
+            .process-card {
+                padding: 30px 20px;
+                max-width: 100%;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+            
+            .card-subtitle {
+                font-size: 13px;
+            }
+            
+            .card-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .process-card {
+                padding: 25px 15px;
+            }
+            
+            .card-title {
+                font-size: 18px;
+            }
+            
+            .card-subtitle {
+                font-size: 12px;
+            }
+        }
+
+        .steps-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .step-circle {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(10, 10, 10, 0.9) 70%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.8) translateY(30px);
+            animation: stepAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .step-circle[data-step="1"] { animation-delay: 0.3s; }
+        .step-circle[data-step="2"] { animation-delay: 0.6s; }
+        .step-circle[data-step="3"] { animation-delay: 0.9s; }
+
+        @keyframes stepAppear {
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .step-circle:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--accent-light);
+        }
+
+        .step-icon {
+            margin-bottom: 12px;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .step-circle:hover .step-icon {
+            color: var(--accent-light);
+            transform: scale(1.1);
+        }
+
+        .step-content {
+            text-align: center;
+        }
+
+        .step-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .step-circle:hover .step-text {
+            color: var(--accent-light);
+        }
+
+        .step-tooltip {
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.95);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .step-circle:hover .step-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .step-connector {
+            position: relative;
+            width: 120px;
+            height: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        .arrow-line {
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+            border-radius: 1px;
+        }
+
+        .arrow-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: arrowShimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes arrowShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .arrow-head {
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid var(--accent);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            transition: border-left-color 0.3s ease;
+        }
+
+        .step-connector:hover .arrow-head {
+            border-left-color: var(--accent-light);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .steps-visual {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .step-connector {
+                width: 4px;
+                height: 60px;
+                transform: rotate(90deg);
+            }
+            
+            .arrow-head {
+                right: 50%;
+                top: -8px;
+                transform: translateX(50%);
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 12px solid var(--accent);
+                border-bottom: none;
+            }
+            
+            .step-circle {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        /* Memory / Emotional Recall Section */
+        .memory-recall {
+            padding: 120px 0;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .memory-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 40% 60%, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+            background-size: 100px 100px, 60px 60px, 80px 80px;
+            animation: particleFloat 20s linear infinite;
+        }
+
+        .floating-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(45deg, transparent 49%, rgba(212, 175, 55, 0.03) 50%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(212, 175, 55, 0.02) 50%, transparent 51%);
+            background-size: 200px 200px, 150px 150px;
+            animation: lineDrift 25s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0px) translateX(0px); }
+            100% { transform: translateY(-100px) translateX(50px); }
+        }
+
+        @keyframes lineDrift {
+            0% { transform: translateX(0px) translateY(0px); }
+            100% { transform: translateX(-100px) translateY(-50px); }
+        }
+
+        .memory-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .memory-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 6vw, 48px);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .memory-headline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            animation: headlineShimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes headlineShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .decorative-line {
+            width: 120px;
+            height: 2px;
+            background: var(--gradient-primary);
+            margin: 0 auto 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .decorative-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: lineShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes lineShimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .story-blocks {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .story-block {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .story-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .story-text {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(18px, 3vw, 22px);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-weight: 400;
+            text-align: center;
+            margin: 0;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .highlight:hover::before {
+            opacity: 1;
+        }
+
+        .highlight:hover {
+            transform: scale(1.02);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .pull-quote {
+            margin: 60px 0;
+            padding: 40px 20px;
+            border-left: 4px solid var(--accent);
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pull-quote.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(20px, 3.5vw, 26px);
+            font-style: italic;
+            color: var(--accent);
+            font-weight: 600;
+            line-height: 1.5;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Improved animations */
+        .story-block {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .story-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pull-quote {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pull-quote.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile tap effects */
+        @media (max-width: 768px) {
+            .highlight:active {
+                transform: scale(1.02);
+                background: rgba(255, 215, 0, 0.2);
+                border-radius: 4px;
+                padding: 2px 4px;
+                margin: -2px -4px;
+            }
+        }
+
+        /* Focus states for accessibility */
+        .highlight:focus {
+            outline: 2px solid #FFD700;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .highlight {
+                background: #FFD700;
+                color: #0D0D0D;
+                padding: 2px 4px;
+                border-radius: 4px;
+            }
+        }
+
+        /* Transformation Promise Section */
+        .transformation-section {
+            padding: 120px 0;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .transformation-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+                        radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
+            animation: subtleBackground 25s linear infinite;
+            pointer-events: none;
+        }
+
+        .transformation-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .social-proof-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 8px 16px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-icon {
+            font-size: 16px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .badge-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .transformation-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            letter-spacing: 0.03em;
+            margin-bottom: 0;
+        }
+
+        .transformation-tagline .ticker-container {
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
+        }
+
+        .transformation-tagline .ticker-container #signupCount {
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: var(--accent) !important;
+            color: var(--accent) !important;
+        }
+
+        .highlight-text {
+            color: var(--accent) !important;
+            -webkit-text-fill-color: var(--accent) !important;
+            background: none !important;
+            font-weight: 800;
+        }
+
+        /* Animated Ticker Styling */
+        #signupCount {
+            display: inline-block;
+            position: relative;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            animation: tickerGlow 2s ease-in-out infinite alternate;
+            color: var(--accent) !important;
+            -webkit-text-fill-color: var(--accent) !important;
+            background: none !important;
+            text-shadow: none;
+        }
+
+        .ticker-container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .ticker-container #signupCount {
+            color: var(--accent) !important;
+            -webkit-text-fill-color: var(--accent) !important;
+            background: none !important;
+            text-shadow: none;
+        }
+
+        @keyframes tickerGlow {
+            0% {
+                text-shadow: 0 0 3px rgba(212, 175, 55, 0.2);
+            }
+            100% {
+                text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        #signupCount.updating {
+            animation: tickerPulse 0.8s ease-in-out;
+        }
+
+        @keyframes tickerPulse {
+            0% {
+                transform: scale(1);
+                color: var(--accent) !important;
+                -webkit-text-fill-color: var(--accent) !important;
+            }
+            50% {
+                transform: scale(1.1);
+                color: var(--accent-light) !important;
+                -webkit-text-fill-color: var(--accent-light) !important;
+                text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+            }
+            100% {
+                transform: scale(1);
+                color: var(--accent) !important;
+                -webkit-text-fill-color: var(--accent) !important;
+            }
+        }
+
+        /* Ticker container for additional effects */
+        .ticker-container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .ticker-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .ticker-container.updating::before {
+            opacity: 1;
+            animation: tickerBorder 0.8s ease-in-out;
+        }
+
+        @keyframes tickerBorder {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        .transformation-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .urgency-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .urgency-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .urgency-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cta-button {
+            background: var(--gradient-soft);
+            color: #8B4513;
+            border: none;
+            padding: 18px 40px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .cta-text {
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .cta-arrow {
+            transition: transform 0.3s ease;
+            font-size: 20px;
+        }
+
+        .cta-button:hover .cta-arrow {
+            transform: translateX(6px);
+        }
+
+        .cta-note {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 120px 0;
+            background: var(--primary);
+        }
+
+        /* Enhanced Form Styling - Clean & Backend-Friendly */
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--secondary);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: var(--radius-xl);
+            padding: 60px 50px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        /* Form Steps Container for Horizontal Sliding */
+        .form-steps-container {
+            display: flex;
+            width: 200%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-step {
+            width: 50%;
+            padding: 0 20px;
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        /* Slide to step 2 */
+        .form-steps-container.slide-to-step2 {
+            transform: translateX(-50%);
+        }
+
+        /* Step Content */
+        .step-content {
+            margin-bottom: 40px;
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .step-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Form Section Groups */
+        .form-section-group {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-heading {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-heading::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Enhanced Form Rows */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .form-row .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Enhanced Form Groups */
+        .form-group {
+            margin-bottom: 35px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 18px 24px;
+            background: var(--primary);
+            border: 2px solid rgba(212, 175, 55, 0.15);
+            border-radius: var(--radius-md);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+            background: rgba(212, 175, 55, 0.02);
+        }
+
+        .form-input:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(212, 175, 55, 0.02);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Enhanced Select Dropdowns */
+        select.form-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23d4af37' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        select.form-input:focus {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23f4e4bc' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+        }
+
+        /* Enhanced Chip Container */
+        .chip-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .chip {
+            background: var(--primary);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 18px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .chip:hover {
+            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+            color: var(--text-primary);
+        }
+
+        .chip:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.1);
+        }
+
+        .chip.selected {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--primary);
+            font-weight: 600;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .chip.selected::before {
+            content: '✓';
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .chip.selected:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-light);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .chip.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: var(--secondary);
+            transform: none;
+            box-shadow: none;
+            border-color: rgba(212, 175, 55, 0.1);
+        }
+
+        .chip.disabled:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: rgba(212, 175, 55, 0.1);
+            background: var(--secondary);
+        }
+
+        /* Enhanced Radio Container */
+        .radio-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 15px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 25px;
+            border: 2px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .radio-option:hover {
+            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.1);
+        }
+
+        .radio-option.selected {
+            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+        }
+
+        .radio-option:active {
+            transform: translateY(0);
+        }
+
+        .radio-input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--accent);
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .radio-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Enhanced Checkbox Container */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            padding: 15px 25px;
+            border: 2px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .checkbox-container:hover {
+            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.1);
+        }
+
+        .checkbox-container.selected {
+            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+        }
+
+        .checkbox-container:active {
+            transform: translateY(0);
+        }
+
+        .checkbox-input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--accent);
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .checkbox-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Enhanced Form Actions */
+        .form-actions {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+            padding-top: 50px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            margin-top: 50px;
+        }
+
+        .back-button {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 20px 45px;
+            border-radius: var(--radius-md);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            min-width: 150px;
+        }
+
+        .back-button:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Error Messages */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        .form-input.error {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 2px solid var(--accent);
+            border-radius: var(--radius-lg);
+        }
+
+        .success-icon {
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .success-message h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .success-message p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Progress Indicator */
+        .form-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+            gap: 20px;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            opacity: 1;
+        }
+
+        .progress-step.completed {
+            opacity: 0.8;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 2px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active .step-number {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .progress-step.completed .step-number {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .step-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .progress-connector {
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            opacity: 0.3;
+        }
+
+        /* Time Estimate */
+        .time-estimate {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: var(--radius-md);
+        }
+
+        .time-estimate p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Privacy Note */
+        .privacy-note {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: var(--radius-md);
+        }
+
+        .privacy-icon {
+            font-size: 18px;
+        }
+
+        .privacy-note p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 40px 20px;
+                margin: 0 16px;
+            }
+            
+            .form-section-group {
+                padding: 25px;
+                margin-bottom: 40px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .chip-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .chip {
+                padding: 14px 16px;
+                font-size: 13px;
+            }
+            
+            .radio-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .next-button, .submit-button, .back-button {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .section-heading {
+                font-size: 20px;
+            }
+            
+            .step-title {
+                font-size: 24px;
+            }
+            
+            .step-description {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Vijay Raja</div>
+                <a href="#form" class="cta-button">Join the waitlist</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-background"></div>
+            <div class="container hero-content">
+                <h1 class="hero-headline">Progressing Toward Something Great…</h1>
+                <p class="hero-subtitle">We are building this just for you.</p>
+                
+                <div class="progress-section">
+                    <div class="teaser-container">
+                        <div class="cycling-text" id="cyclingText">
+                            <span class="teaser-phrase active">Crafting a new experience...</span>
+                            <span class="teaser-phrase">Something amazing is on the way...</span>
+                            <span class="teaser-phrase">Preparing for something extraordinary...</span>
+                            <span class="teaser-phrase">We're making magic happen...</span>
+                            <span class="teaser-phrase">Behind the scenes, greatness in progress...</span>
+                            <span class="teaser-phrase">Cooking up something special...</span>
+                            <span class="teaser-phrase">Almost ready to surprise you...</span>
+                            <span class="teaser-phrase">Building your next big thing...</span>
+                            <span class="teaser-phrase">Putting final touches in place...</span>
+                            <span class="teaser-phrase">Hang tight, brilliance is loading...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-percentage" id="progressPercentage">0%</div>
+                    </div>
+                </div>
+
+                <div class="hero-cta-container">
+                    <a href="#form" class="hero-cta">Join the waitlist</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three-Step Growth Path -->
+        <section class="growth-path">
+            <div class="container">
+                <div class="growth-content">
+                    <h2 class="growth-headline fade-in">The Right Circle Changes Everything</h2>
+                    <p class="growth-subtitle fade-in">Growth happens when you are in the right place, at the right time, with the right people</p>
+                    
+                    <div class="process-cards">
+                        <div class="process-card fade-in" data-step="1">
+                            <div class="card-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">YOU</h3>
+                                <p class="card-subtitle">It starts with you...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-connector">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="process-card fade-in" data-step="2">
+                            <div class="card-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">WHAT MORE</h3>
+                                <p class="card-subtitle">Find your circle</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-connector">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="process-card fade-in" data-step="3">
+                            <div class="card-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 14l5-5 5 5z" fill="currentColor"/>
+                                    <path d="M7 10l5-5 5 5z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">GROWTH</h3>
+                                <p class="card-subtitle">Grow together</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memory Section -->
+        <section class="memory-recall">
+            <div class="memory-background">
+                <div class="floating-particles"></div>
+                <div class="floating-lines"></div>
+            </div>
+            <div class="container memory-content">
+                <h2 class="memory-headline fade-in-story">You Remember How It Felt</h2>
+                <div class="decorative-line fade-in-story"></div>
+                
+                <div class="story-blocks">
+                    <div class="story-block fade-in-story" data-delay="0.2">
+                        <p class="story-text">Remember the day you walked into <span class="highlight">Vijay Raja's</span> class?</p>
+                    </div>
+                    
+                    <div class="story-block fade-in-story" data-delay="0.4">
+                        <p class="story-text">It was <span class="highlight">different</span> from any other class you had before.</p>
+                    </div>
+                    
+                    <div class="story-block fade-in-story" data-delay="0.6">
+                        <p class="story-text">The boring parts of the subject suddenly turned into <span class="highlight">stories</span> you still tell your friends.</p>
+                    </div>
+                    
+                    <div class="story-block fade-in-story" data-delay="0.8">
+                        <p class="story-text">The hard concepts started to feel <span class="highlight">simple and clear</span>, like they just made sense.</p>
+                    </div>
+                    
+                    <div class="story-block fade-in-story" data-delay="1.0">
+                        <p class="story-text">Think about the <span class="highlight">laughter</span> that filled the room and the moments when everything clicked perfectly.</p>
+                    </div>
+                    
+                    <div class="pull-quote fade-in-story" data-delay="1.2">
+                        <p class="quote-text">"Those classes did not just teach you stuff. They changed how you think."</p>
+                    </div>
+                    
+                    <div class="story-block fade-in-story" data-delay="1.4">
+                        <p class="story-text">People always talked about his <span class="highlight">extra gyaan's</span> that went beyond the books and his jokes that made learning fun and easy. Everyone says one thing. Once you learn from him, you <span class="highlight">never forget</span>.</p>
+                    </div>
+                    
+                    <div class="pull-quote fade-in-story" data-delay="1.8">
+                        <p class="quote-text">"Those classrooms hold memories of growth, fun, and change."</p>
+                    </div>
+                    
+                    <div class="story-block fade-in-story" data-delay="2.0">
+                        <p class="story-text">And now we are bringing that <span class="highlight">experience</span> right to you again.</p>
+                    </div>
+                    
+                    <div class="story-block fade-in-story" data-delay="2.2">
+                        <p class="story-text">This is not just about learning. It is about feeling that <span class="highlight">joy and discovery</span> all over again.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transformation Promise Section -->
+        <section class="transformation-section">
+            <div class="container">
+                <div class="transformation-content">
+                    <div class="social-proof-badge">
+                        <span class="badge-icon">🔥</span>
+                        <span class="badge-text">Trending Now</span>
+                    </div>
+                    
+                    <h2 class="transformation-tagline fade-in">
+                        Join the <span class="ticker-container"><span id="signupCount">247</span></span> people who have already signed up for the 
+                        <span class="highlight-text">More Movement</span> waitlist.
+                    </h2>
+                    
+                    <p class="transformation-subtitle fade-in">
+                        Be part of something big. Don't miss out on what's coming next.
+                    </p>
+                    
+                    <div class="urgency-indicator fade-in">
+                        <div class="urgency-dot"></div>
+                        <span class="urgency-text">Limited spots available</span>
+                    </div>
+                    
+                    <div class="cta-container fade-in">
+                        <a href="#form" class="cta-button hero-cta">
+                            <span class="cta-text">Join the More Movement</span>
+                            <span class="cta-arrow">→</span>
+                        </a>
+ 
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section id="form" class="form-section">
+            <div class="container">
+                <h2 class="section-title fade-in">Join the waitlist</h2>
+                <p class="section-subtitle fade-in">Your path to something extraordinary starts here.</p>
+                
+                <div class="form-container fade-in">
+                    <!-- Progress Indicator -->
+                    <div class="form-progress">
+                        <div class="progress-step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Basic Info</div>
+                        </div>
+                        <div class="progress-connector"></div>
+                        <div class="progress-step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Professional Details</div>
+                        </div>
+                    </div>
+
+                    <!-- Form Steps Container -->
+                    <div class="form-steps-container">
+                        <!-- Step 1: Basic Information -->
+                        <div id="step1Form" class="form-step active" data-step="1">
+                            <div class="step-content">
+                                <h3 class="step-title">Basic Information</h3>
+                                <p class="step-description">Let's start with your essential details.</p>
+                                
+                                <form id="basicInfoForm">
+                                    <div class="form-group">
+                                        <label for="fullName" class="form-label">Full Name *</label>
+                                        <input type="text" id="fullName" name="fullName" class="form-input" required placeholder="Enter your full name">
+                                        <div class="error-message" id="fullName-error"></div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address *</label>
+                                        <input type="email" id="email" name="email" class="form-input" required placeholder="Enter your email address">
+                                        <div class="error-message" id="email-error"></div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone Number *</label>
+                                        <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+91 98765 43210">
+                                        <div class="error-message" id="phone-error"></div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="next-button" onclick="validateAndProceed(1)">Continue to Professional Details</button>
+                            </div>
+                            
+                            <div class="time-estimate">
+                                <p>Step 2 takes about 3-4 minutes to complete.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Professional Details -->
+                        <div id="step2Form" class="form-step" data-step="2">
+                            <div class="step-content">
+                                <h3 class="step-title">Professional Details</h3>
+                                <p class="step-description">Help us understand your professional background and aspirations.</p>
+                                
+                                <form id="professionalDetailsForm">
+                                    <!-- Professional Information Section -->
+                                    <div class="form-section-group">
+                                        <h4 class="section-heading">Professional Information</h4>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="primaryArea" class="form-label">Primary Area of Work *</label>
+                                                <select id="primaryArea" name="primaryArea" class="form-input" required>
+                                                    <option value="">Select your primary area</option>
+                                                    <option value="accounting-bookkeeping">Accounting & Bookkeeping Services</option>
+                                                    <option value="audit-assurance">Audit & Assurance</option>
+                                                    <option value="banking-finance">Banking & Finance</option>
+                                                    <option value="business-consulting">Business Consulting & Advisory</option>
+                                                    <option value="corporate-law">Corporate Law & Secretarial</option>
+                                                    <option value="content-creation">Content Creation & Knowledge Sharing</option>
+                                                    <option value="data-analytics">Data Analytics & Business Intelligence</option>
+                                                    <option value="digital-transformation">Digital Transformation & Automation</option>
+                                                    <option value="esg-sustainability">ESG & Sustainability Reporting</option>
+                                                    <option value="financial-planning">Financial Planning & Analysis</option>
+                                                    <option value="forensic-investigative">Forensic & Investigative Services</option>
+                                                    <option value="industry-role">Industry Role (Finance/Accounts)</option>
+                                                    <option value="investment-wealth">Investment & Wealth Management</option>
+                                                    <option value="investor">Investor / Angel / Venture Capital</option>
+                                                    <option value="large-business">Large Business / Corporate Leader</option>
+                                                    <option value="legal-practice">Legal Practice / Litigation</option>
+                                                    <option value="mergers-acquisitions">Mergers & Acquisitions / Deal Advisory</option>
+                                                    <option value="practice-independent">Practice (Independent Professional)</option>
+                                                    <option value="risk-advisory">Risk Advisory & Internal Controls</option>
+                                                    <option value="small-business">Small Business / MSME Owner</option>
+                                                    <option value="startups-entrepreneurship">Startups & Entrepreneurship</option>
+                                                    <option value="student-trainee">Student / Trainee</option>
+                                                    <option value="taxation-compliance">Taxation & Compliance</option>
+                                                    <option value="teaching-training">Teaching & Training</option>
+                                                    <option value="technology-consulting">Technology Consulting (ERP, Fintech etc.)</option>
+                                                    <option value="other">Other (please specify)</option>
+                                                </select>
+                                                <div class="error-message" id="primaryArea-error"></div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="experience" class="form-label">Years of Experience *</label>
+                                                <select id="experience" name="experience" class="form-input" required>
+                                                    <option value="">Select experience level</option>
+                                                    <option value="0-2">0–2 years</option>
+                                                    <option value="3-5">3–5 years</option>
+                                                    <option value="6-10">6–10 years</option>
+                                                    <option value="11-15">11–15 years</option>
+                                                    <option value="16-20">16–20 years</option>
+                                                    <option value="21-25">21–25 years</option>
+                                                    <option value="26-30">26–30 years</option>
+                                                    <option value="31-35">31–35 years</option>
+                                                    <option value="35+">35+ years</option>
+                                                </select>
+                                                <div class="error-message" id="experience-error"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="otherAreaGroup" style="display: none;">
+                                            <label for="otherArea" class="form-label">Please specify your area of work *</label>
+                                            <input type="text" id="otherArea" name="otherArea" class="form-input" placeholder="Enter your specific area of work">
+                                            <div class="error-message" id="otherArea-error"></div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="organization" class="form-label">Current Organization *</label>
+                                                <input type="text" id="organization" name="organization" class="form-input" required placeholder="Enter organization name">
+                                                <div class="error-message" id="organization-error"></div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="role" class="form-label">Role / Designation *</label>
+                                                <input type="text" id="role" name="role" class="form-input" required placeholder="Enter your role">
+                                                <div class="error-message" id="role-error"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Values & Priorities Section -->
+                                    <div class="form-section-group">
+                                        <h4 class="section-heading">Values & Priorities</h4>
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label">What matters most to you? *</label>
+                                            <div class="chip-container" id="valuesContainer">
+                                                <button type="button" class="chip" data-value="personal-growth">Personal growth & development</button>
+                                                <button type="button" class="chip" data-value="positive-impact">Making a positive impact</button>
+                                                <button type="button" class="chip" data-value="professional-success">Professional success</button>
+                                                <button type="button" class="chip" data-value="continuous-learning">Continuous learning</button>
+                                                <button type="button" class="chip" data-value="building-networks">Building strong networks</button>
+                                                <button type="button" class="chip" data-value="scaling-business">Scaling my business</button>
+                                                <button type="button" class="chip" data-value="creating-employment">Creating employment</button>
+                                                <button type="button" class="chip" data-value="supporting-startups">Supporting startups</button>
+                                                <button type="button" class="chip" data-value="growing-investments">Growing my investments</button>
+                                                <button type="button" class="chip" data-value="leaving-legacy">Leaving a legacy</button>
+                                                <button type="button" class="chip" data-value="other">Other</button>
+                                            </div>
+                                            <div class="error-message" id="values-error"></div>
+                                        </div>
+
+                                        <div class="form-group" id="otherValuesGroup" style="display: none;">
+                                            <label for="otherValues" class="form-label">Please specify what matters most to you *</label>
+                                            <input type="text" id="otherValues" name="otherValues" class="form-input" placeholder="Describe what matters most to you">
+                                            <div class="error-message" id="otherValues-error"></div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label">Top 2 Professional Priorities *</label>
+                                            <div class="chip-container" id="prioritiesContainer">
+                                                <button type="button" class="chip" data-value="leadership-development">Leadership development</button>
+                                                <button type="button" class="chip" data-value="strategic-thinking">Strategic thinking</button>
+                                                <button type="button" class="chip" data-value="business-growth">Business growth & expansion</button>
+                                                <button type="button" class="chip" data-value="innovation-growth">Innovation & growth</button>
+                                                <button type="button" class="chip" data-value="funding-investment">Funding & investment</button>
+                                                <button type="button" class="chip" data-value="networking">Networking</button>
+                                                <button type="button" class="chip" data-value="skill-enhancement">Skill enhancement</button>
+                                                <button type="button" class="chip" data-value="career-advancement">Career advancement</button>
+                                                <button type="button" class="chip" data-value="other">Other</button>
+                                            </div>
+                                            <div class="error-message" id="priorities-error"></div>
+                                        </div>
+
+                                        <div class="form-group" id="otherPrioritiesGroup" style="display: none;">
+                                            <label for="otherPriorities" class="form-label">Please specify your professional priorities *</label>
+                                            <input type="text" id="otherPriorities" name="otherPriorities" class="form-input" placeholder="Describe your professional priorities">
+                                            <div class="error-message" id="otherPriorities-error"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Key Challenge Section -->
+                                    <div class="form-section-group">
+                                        <h4 class="section-heading">Key Challenge</h4>
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label">Your Biggest Challenge Right Now *</label>
+                                            <div class="chip-container" id="challengeContainer">
+                                                <button type="button" class="chip" data-value="work-life-balance">Work-life balance</button>
+                                                <button type="button" class="chip" data-value="finding-opportunities">Finding opportunities</button>
+                                                <button type="button" class="chip" data-value="raising-funds">Raising funds/investment</button>
+                                                <button type="button" class="chip" data-value="scaling-business">Scaling my business</button>
+                                                <button type="button" class="chip" data-value="building-connections">Building professional connections</button>
+                                                <button type="button" class="chip" data-value="managing-team">Managing team or organization</button>
+                                                <button type="button" class="chip" data-value="accessing-markets">Accessing markets or customers</button>
+                                                <button type="button" class="chip" data-value="managing-clients">Managing clients</button>
+                                                <button type="button" class="chip" data-value="finding-partners">Finding co-founders/partners</button>
+                                                <button type="button" class="chip" data-value="investment-opportunities">Identifying investment opportunities</button>
+                                                <button type="button" class="chip" data-value="other">Other</button>
+                                            </div>
+                                            <div class="error-message" id="challenge-error"></div>
+                                        </div>
+
+                                        <div class="form-group" id="otherChallengeGroup" style="display: none;">
+                                            <label for="otherChallenge" class="form-label">Please specify your challenge *</label>
+                                            <input type="text" id="otherChallenge" name="otherChallenge" class="form-input" placeholder="Describe your specific challenge">
+                                            <div class="error-message" id="otherChallenge-error"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Address Section -->
+                                    <div class="form-section-group">
+                                        <h4 class="section-heading">Address for Materials/Invites</h4>
+                                        
+                                        <div class="form-group">
+                                            <label for="streetAddress" class="form-label">Street Address *</label>
+                                            <input type="text" id="streetAddress" name="streetAddress" class="form-input" required placeholder="Enter your street address">
+                                            <div class="error-message" id="streetAddress-error"></div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="locality" class="form-label">Locality / Area *</label>
+                                                <input type="text" id="locality" name="locality" class="form-input" required placeholder="Enter your locality or area">
+                                                <div class="error-message" id="locality-error"></div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="landmark" class="form-label">Landmark (Optional)</label>
+                                                <input type="text" id="landmark" name="landmark" class="form-input" placeholder="Enter nearby landmark">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="city" class="form-label">City *</label>
+                                                <input type="text" id="city" name="city" class="form-input" required placeholder="Enter your city">
+                                                <div class="error-message" id="city-error"></div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="state" class="form-label">State *</label>
+                                                <select id="state" name="state" class="form-input" required>
+                                                    <option value="">Select your state</option>
+                                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                    <option value="Assam">Assam</option>
+                                                    <option value="Bihar">Bihar</option>
+                                                    <option value="Chandigarh">Chandigarh</option>
+                                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                                    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                    <option value="Goa">Goa</option>
+                                                    <option value="Gujarat">Gujarat</option>
+                                                    <option value="Haryana">Haryana</option>
+                                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                    <option value="Jharkhand">Jharkhand</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Ladakh">Ladakh</option>
+                                                    <option value="Lakshadweep">Lakshadweep</option>
+                                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                    <option value="Maharashtra">Maharashtra</option>
+                                                    <option value="Manipur">Manipur</option>
+                                                    <option value="Meghalaya">Meghalaya</option>
+                                                    <option value="Mizoram">Mizoram</option>
+                                                    <option value="Nagaland">Nagaland</option>
+                                                    <option value="Odisha">Odisha</option>
+                                                    <option value="Puducherry">Puducherry</option>
+                                                    <option value="Punjab">Punjab</option>
+                                                    <option value="Rajasthan">Rajasthan</option>
+                                                    <option value="Sikkim">Sikkim</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Telangana">Telangana</option>
+                                                    <option value="Tripura">Tripura</option>
+                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                    <option value="Uttarakhand">Uttarakhand</option>
+                                                    <option value="West Bengal">West Bengal</option>
+                                                    <option value="other">Other (International)</option>
+                                                </select>
+                                                <div class="error-message" id="state-error"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="otherStateGroup" style="display: none;">
+                                            <label for="otherState" class="form-label">Please specify your state/country *</label>
+                                            <input type="text" id="otherState" name="otherState" class="form-input" placeholder="Enter your state or country">
+                                            <div class="error-message" id="otherState-error"></div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="pinCode" class="form-label">PIN Code *</label>
+                                            <input type="text" id="pinCode" name="pinCode" class="form-input" required placeholder="Enter 6-digit PIN code" maxlength="6" pattern="[0-9]{6}">
+                                            <div class="error-message" id="pinCode-error"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Personal Touch Section -->
+                                    <div class="form-section-group">
+                                        <h4 class="section-heading">Personal Touch</h4>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="birthday" class="form-label">Birthday (Optional)</label>
+                                                <input type="date" id="birthday" name="birthday" class="form-input">
+                                            </div>
+                                            
+                                            <div class="form-group checkbox-group">
+                                                <div class="checkbox-container" id="skipBirthdayContainer">
+                                                    <input type="checkbox" id="skipBirthday" name="skipBirthday" class="checkbox-input">
+                                                    <label for="skipBirthday" class="checkbox-label">Skip receiving birthday wishes</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Special Connection Section -->
+                                    <div class="form-section-group">
+                                        <h4 class="section-heading">Special Connection</h4>
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label">Were you a student of Vijay Raja? *</label>
+                                            <div class="radio-container" id="studentContainer">
+                                                <div class="radio-option" id="studentYesOption">
+                                                    <input type="radio" id="studentYes" name="wasStudent" value="yes" class="radio-input" required>
+                                                    <label for="studentYes" class="radio-label">Yes</label>
+                                                </div>
+                                                <div class="radio-option" id="studentNoOption">
+                                                    <input type="radio" id="studentNo" name="wasStudent" value="no" class="radio-input" required>
+                                                    <label for="studentNo" class="radio-label">No</label>
+                                                </div>
+                                            </div>
+                                            <div class="error-message" id="wasStudent-error"></div>
+                                        </div>
+
+                                        <div id="studentDetails" style="display: none;">
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="batchYear" class="form-label">Year of Batch *</label>
+                                                    <input type="text" id="batchYear" name="batchYear" class="form-input" placeholder="e.g., 2020, 2019, etc.">
+                                                    <div class="error-message" id="batchYear-error"></div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="instituteName" class="form-label">Name of Institute *</label>
+                                                    <input type="text" id="instituteName" name="instituteName" class="form-input" placeholder="Enter the name of your institute">
+                                                    <div class="error-message" id="instituteName-error"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="back-button" onclick="goToStep(1)">Back</button>
+                                <button type="submit" class="submit-button" onclick="submitForm()">Join the More Movement</button>
+                            </div>
+                            
+                            <div class="privacy-note">
+                                <span class="privacy-icon">🔒</span>
+                                <p>Your data is encrypted and secure. We respect your privacy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">VR What More</div>
+                    <p class="footer-description">Join the More Movement</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/company/vijay-raja" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        
+                        <a href="https://instagram.com/vijayraja" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                        
+                        <a href="https://youtube.com/@vijayraja" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            <span>YouTube</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Questions?</h4>
+                    <p class="footer-contact">Write to us at</p>
+                    <a href="mailto:info@vijayraja.com" class="footer-email">info@vijayraja.com</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 by Vijay Raja. Powered by WMG</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cycling teaser phrases
+        const teaserPhrases = [
+            "Crafting a new experience...",
+            "Something amazing is on the way...",
+            "Preparing for something extraordinary...",
+            "We're making magic happen...",
+            "Behind the scenes, greatness in progress...",
+            "Cooking up something special...",
+            "Almost ready to surprise you...",
+            "Building your next big thing...",
+            "Putting final touches in place...",
+            "Hang tight, brilliance is loading..."
+        ];
+
+        let currentPhraseIndex = 0;
+        const cyclingText = document.getElementById('cyclingText');
+        const progressFill = document.getElementById('progressFill');
+        const progressPercentage = document.getElementById('progressPercentage');
+
+        function cycleTeaserPhrases() {
+            const phrases = cyclingText.querySelectorAll('.teaser-phrase');
+            
+            // Remove active class from current phrase
+            phrases[currentPhraseIndex].classList.remove('active');
+            
+            // Move to next phrase
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            
+            // Add active class to new phrase
+            phrases[currentPhraseIndex].classList.add('active');
+        }
+
+        function updateProgress() {
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += Math.random() * 2 + 0.5; // Random increment between 0.5 and 2.5
+                
+                if (progress >= 99) {
+                    progress = 99;
+                    clearInterval(progressInterval);
+                    // Restart progress after a brief pause
+                    setTimeout(() => {
+                        progress = 0;
+                        progressFill.style.width = '0%';
+                        progressPercentage.textContent = '0%';
+                        updateProgress();
+                    }, 2000);
+                }
+                
+                progressFill.style.width = progress + '%';
+                progressPercentage.textContent = Math.round(progress) + '%';
+            }, 100);
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start cycling phrases every 3 seconds
+            setInterval(cycleTeaserPhrases, 3000);
+            
+            // Start progress animation
+            updateProgress();
+            
+            // Initialize story animations
+            initializeStoryAnimations();
+            
+            // Initialize form functionality
+            initializeForm();
+            
+            // Initialize dynamic signup count
+            initializeSignupCount();
+            
+            // Start real-time ticker
+            startRealtimeTicker();
+        });
+
+        // Dynamic signup count functionality
+        function initializeSignupCount() {
+            const signupCountElement = document.getElementById('signupCount');
+            let currentCount = parseInt(signupCountElement.textContent);
+            
+            // Get stored count from localStorage or use default
+            const storedCount = localStorage.getItem('signupCount') || currentCount;
+            currentCount = parseInt(storedCount);
+            
+            // Update display with animation
+            animateCount(signupCountElement, 0, currentCount, 2000);
+            
+            // Set up real-time updates
+            setInterval(() => {
+                const randomIncrement = Math.floor(Math.random() * 3) + 1; // 1 to 3 people
+                const oldCount = currentCount;
+                currentCount += randomIncrement;
+                localStorage.setItem('signupCount', currentCount);
+                
+                // Animate the count change
+                animateCount(signupCountElement, oldCount, currentCount, 1000);
+            }, 10800000); // Every 3 hours
+        }
+
+        // Enhanced animated counting function
+        function animateCount(element, start, end, duration) {
+            const startTime = performance.now();
+            const difference = end - start;
+            
+            // Add updating class for visual feedback
+            element.classList.add('updating');
+            const container = element.closest('.ticker-container');
+            if (container) {
+                container.classList.add('updating');
+            }
+            
+            function updateCount(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                const currentValue = Math.floor(start + (difference * easeOutQuart));
+                
+                element.textContent = currentValue;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCount);
+                } else {
+                    // Remove updating class after animation
+                    setTimeout(() => {
+                        element.classList.remove('updating');
+                        if (container) {
+                            container.classList.remove('updating');
+                        }
+                    }, 300);
+                }
+            }
+            
+            requestAnimationFrame(updateCount);
+        }
+
+        // Real-time ticker simulation
+        function startRealtimeTicker() {
+            const signupCountElement = document.getElementById('signupCount');
+            let currentCount = parseInt(signupCountElement.textContent);
+            
+            // Simulate real-time updates every 30 seconds for demo purposes
+            setInterval(() => {
+                const randomIncrement = Math.floor(Math.random() * 2) + 1; // 1 to 2 people
+                const oldCount = currentCount;
+                currentCount += randomIncrement;
+                
+                // Animate the count change
+                animateCount(signupCountElement, oldCount, currentCount, 800);
+                
+                // Store the new count
+                localStorage.setItem('signupCount', currentCount);
+            }, 30000); // Every 30 seconds for demo
+        }
+
+        // Update signup count on form submission
+        function updateSignupCount() {
+            const signupCountElement = document.getElementById('signupCount');
+            const currentCount = parseInt(signupCountElement.textContent);
+            const newCount = currentCount + 1;
+            
+            // Animate the increment
+            animateCount(signupCountElement, currentCount, newCount, 800);
+            
+            // Store the new count
+            localStorage.setItem('signupCount', newCount);
+        }
+
+        // Story animations
+        function initializeStoryAnimations() {
+            const storyBlocks = document.querySelectorAll('.fade-in-story');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, delay * 1000);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            storyBlocks.forEach(block => {
+                observer.observe(block);
+            });
+        }
+
+        // Interactive highlight effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const highlights = document.querySelectorAll('.highlight');
+            
+            highlights.forEach(highlight => {
+                // Desktop hover effects
+                highlight.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.textShadow = '0 0 10px rgba(255, 215, 0, 0.5)';
+                });
+                
+                highlight.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.textShadow = 'none';
+                });
+                
+                // Mobile tap effects
+                highlight.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.background = 'rgba(255, 215, 0, 0.2)';
+                    this.style.borderRadius = '4px';
+                    this.style.padding = '2px 4px';
+                    this.style.margin = '-2px -4px';
+                });
+                
+                highlight.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                        this.style.background = 'transparent';
+                        this.style.borderRadius = '0';
+                        this.style.padding = '0';
+                        this.style.margin = '0';
+                    }, 200);
+                });
+            });
+        });
+
+        // Form functionality
+        let step1Data = {};
+
+        function initializeForm() {
+            // Initialize step1Data object
+            window.step1Data = {};
+            
+            // Load saved data if exists
+            const savedData = localStorage.getItem('step1Data');
+            if (savedData) {
+                step1Data = JSON.parse(savedData);
+                // Pre-fill form fields
+                Object.keys(step1Data).forEach(key => {
+                    const input = document.querySelector(`[name="${key}"]`);
+                    if (input) {
+                        input.value = step1Data[key];
+                    }
+                });
+            }
+
+            // Handle form submissions
+            document.getElementById('preferencesForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitCompleteForm();
+            });
+        }
+
+        function saveStep1AndContinue() {
+            // Collect step 1 data
+            const step1Form = document.getElementById('waitlistForm');
+            const formData = new FormData(step1Form);
+            
+            // Validate required fields
+            const requiredFields = ['fullName', 'email', 'phone'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const input = step1Form.querySelector(`[name="${field}"]`);
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#ff6b6b';
+                } else {
+                    input.style.borderColor = 'rgba(212, 175, 55, 0.2)';
+                }
+            });
+
+            if (!isValid) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Save step 1 data
+            for (let [key, value] of formData.entries()) {
+                step1Data[key] = value;
+            }
+            localStorage.setItem('step1Data', JSON.stringify(step1Data));
+
+            // Move to step 2
+            goToStep2();
+        }
+
+        function goToStep2() {
+            // Update progress indicator
+            document.querySelector('.progress-step[data-step="1"]').classList.remove('active');
+            document.querySelector('.progress-step[data-step="1"]').classList.add('completed');
+            document.querySelector('.progress-step[data-step="2"]').classList.add('active');
+
+            // Show step 2 form
+            document.getElementById('waitlistForm').style.display = 'none';
+            document.getElementById('preferencesForm').style.display = 'block';
+            document.getElementById('preferencesForm').classList.add('active');
+        }
+
+        function goToStep1() {
+            // Update progress indicator
+            document.querySelector('.progress-step[data-step="2"]').classList.remove('active');
+            document.querySelector('.progress-step[data-step="1"]').classList.remove('completed');
+            document.querySelector('.progress-step[data-step="1"]').classList.add('active');
+
+            // Show step 1 form
+            document.getElementById('preferencesForm').style.display = 'none';
+            document.getElementById('waitlistForm').style.display = 'block';
+            document.getElementById('waitlistForm').classList.add('active');
+        }
+
+        function submitCompleteForm() {
+            // Collect step 2 data
+            const step2Form = document.getElementById('preferencesForm');
+            const formData = new FormData(step2Form);
+            const step2Data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                step2Data[key] = value;
+            }
+
+            // Combine both steps' data
+            const completeData = { ...step1Data, ...step2Data };
+            
+            // Here you would typically send the data to your server
+            console.log('Complete form data:', completeData);
+            
+            // Update signup count
+            updateSignupCount();
+            
+            // Show success message
+            showSuccessMessage();
+            
+            // Clear stored data
+            localStorage.removeItem('step1Data');
+            step1Data = {};
+        }
+
+        function showSuccessMessage() {
+            const formContainer = document.querySelector('.form-container');
+            formContainer.innerHTML = `
+                <div class="success-message">
+                    <div class="success-icon">✓</div>
+                    <h3>Welcome to the More Movement!</h3>
+                    <p>Thank you for joining us. We'll be in touch soon with personalized updates.</p>
+                </div>
+            `;
+        }
+
+        // Simple form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, initializing form...');
+            initializeForm();
+        });
+
+        function initializeForm() {
+            console.log('Initializing form...');
+            
+            // Set up step 2 form submission
+            const step2Form = document.getElementById('step2Form');
+            if (step2Form) {
+                step2Form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    console.log('Step 2 form submitted');
+                    submitForm();
+                });
+            }
+            
+            // Initialize all interactive elements
+            initializeChips();
+            initializeConditionalFields();
+            initializeRadioButtons();
+            initializeCheckboxes();
+            
+            console.log('Form initialized successfully');
+        }
+
+        function validateAndProceed(step) {
+            console.log('validateAndProceed called with step:', step);
+            
+            if (step === 1) {
+                if (validateStep1()) {
+                    console.log('Step 1 validation passed, moving to step 2');
+                    showStep2();
+                } else {
+                    console.log('Step 1 validation failed');
+                }
+            }
+        }
+
+        function validateStep1() {
+            console.log('Validating step 1...');
+            
+            const fullName = document.getElementById('fullName');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            
+            if (!fullName || !email || !phone) {
+                console.error('Required form elements not found');
+                return false;
+            }
+            
+            const fullNameValue = fullName.value.trim();
+            const emailValue = email.value.trim();
+            const phoneValue = phone.value.trim();
+            
+            let isValid = true;
+            
+            // Clear previous errors
+            clearErrors();
+            
+            // Validate full name
+            if (!fullNameValue) {
+                showError('fullName', 'Full name is required');
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!emailValue) {
+                showError('email', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(emailValue)) {
+                showError('email', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate phone
+            if (!phoneValue) {
+                showError('phone', 'Phone number is required');
+                isValid = false;
+            }
+            
+            console.log('Step 1 validation result:', isValid);
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showStep2() {
+            console.log('Showing step 2 with horizontal slide...');
+            
+            // Add sliding class to container
+            const container = document.querySelector('.form-steps-container');
+            if (container) {
+                container.classList.add('slide-to-step2');
+                console.log('Added slide-to-step2 class');
+            } else {
+                console.error('Form steps container not found');
+            }
+            
+            // Update progress indicator
+            updateProgressIndicator(2);
+            
+            currentStep = 2;
+            console.log('Step 2 is now visible');
+            
+            // Re-initialize step 2 elements
+            setTimeout(() => {
+                console.log('Re-initializing step 2 elements...');
+                initializeChips();
+                initializeConditionalFields();
+                initializeRadioButtons();
+                initializeCheckboxes();
+            }, 100);
+        }
+
+        function debugStep2() {
+            console.log('Debug: Forcing step 2...');
+            showStep2();
+        }
+
+        function goToStep(step) {
+            console.log('goToStep called with step:', step);
+            
+            if (step === 1) {
+                showStep1();
+            } else if (step === 2) {
+                showStep2();
+            }
+        }
+
+        function showStep1() {
+            console.log('Showing step 1...');
+            
+            // Remove sliding class from container
+            const container = document.querySelector('.form-steps-container');
+            if (container) {
+                container.classList.remove('slide-to-step2');
+            }
+            
+            // Update progress indicator
+            updateProgressIndicator(1);
+            
+            currentStep = 1;
+        }
+
+        function updateProgressIndicator(step) {
+            console.log('Updating progress indicator to step:', step);
+            
+            const progressSteps = document.querySelectorAll('.progress-step');
+            
+            progressSteps.forEach((stepEl, index) => {
+                stepEl.classList.remove('active', 'completed');
+                
+                if (index + 1 < step) {
+                    stepEl.classList.add('completed');
+                } else if (index + 1 === step) {
+                    stepEl.classList.add('active');
+                }
+            });
+        }
+
+        function showError(fieldId, message) {
+            const errorElement = document.getElementById(`${fieldId}-error`);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.classList.add('show');
+            }
+            
+            const fieldElement = document.getElementById(fieldId);
+            if (fieldElement) {
+                fieldElement.classList.add('error');
+            }
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.classList.remove('show');
+            });
+            
+            document.querySelectorAll('.form-input.error').forEach(input => {
+                input.classList.remove('error');
+            });
+        }
+
+        function submitForm() {
+            console.log('Submitting form...');
+            
+            // Collect all form data
+            const formData = collectFormData();
+            console.log('Form data collected:', formData);
+            
+            // Update signup count
+            updateSignupCount();
+            
+            // Show success message
+            showSuccessMessage();
+        }
+
+        function collectFormData() {
+            const data = {};
+            
+            // Collect step 1 data
+            const fullName = document.getElementById('fullName');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            
+            if (fullName) data.fullName = fullName.value;
+            if (email) data.email = email.value;
+            if (phone) data.phone = phone.value;
+            
+            // Collect step 2 data
+            const step2Form = document.getElementById('step2Form');
+            if (step2Form) {
+                const formData = new FormData(step2Form);
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+            }
+            
+            // Collect chip selections
+            const selectedValues = Array.from(document.querySelectorAll('#valuesContainer .chip.selected')).map(chip => chip.dataset.value);
+            const selectedPriorities = Array.from(document.querySelectorAll('#prioritiesContainer .chip.selected')).map(chip => chip.dataset.value);
+            const selectedChallenge = Array.from(document.querySelectorAll('#challengeContainer .chip.selected')).map(chip => chip.dataset.value)[0];
+            
+            // Collect "Other" values
+            const otherValues = document.getElementById('otherValues');
+            const otherPriorities = document.getElementById('otherPriorities');
+            const otherChallenge = document.getElementById('otherChallenge');
+            
+            data.values = selectedValues;
+            data.priorities = selectedPriorities;
+            data.biggestChallenge = selectedChallenge;
+            
+            if (otherValues && otherValues.value) data.otherValues = otherValues.value;
+            if (otherPriorities && otherPriorities.value) data.otherPriorities = otherPriorities.value;
+            if (otherChallenge && otherChallenge.value) data.otherChallenge = otherChallenge.value;
+            
+            return data;
+        }
+
+        function showSuccessMessage() {
+            const formContainer = document.querySelector('.form-container');
+            if (formContainer) {
+                formContainer.innerHTML = `
+                    <div class="success-message">
+                        <div class="success-icon">✓</div>
+                        <h3>Welcome to the More Movement!</h3>
+                        <p>Thank you for joining our exclusive community. We'll be in touch soon with personalized updates and early access to our programs.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function initializeChips() {
+            console.log('Initializing chips...');
+            
+            // Values chips (multi-select)
+            const valueChips = document.querySelectorAll('#valuesContainer .chip');
+            valueChips.forEach(chip => {
+                chip.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.classList.toggle('selected');
+                    
+                    // Handle "Other" option for values
+                    if (this.dataset.value === 'other') {
+                        const otherGroup = document.getElementById('otherValuesGroup');
+                        const otherInput = document.getElementById('otherValues');
+                        if (otherGroup && otherInput) {
+                            if (this.classList.contains('selected')) {
+                                otherGroup.style.display = 'block';
+                                otherInput.required = true;
+                            } else {
+                                otherGroup.style.display = 'none';
+                                otherInput.required = false;
+                                otherInput.value = '';
+                            }
+                        }
+                    }
+                    
+                    console.log('Value chip clicked:', this.dataset.value, 'Selected:', this.classList.contains('selected'));
+                });
+            });
+
+            // Priorities chips (max 2)
+            const priorityChips = document.querySelectorAll('#prioritiesContainer .chip');
+            priorityChips.forEach(chip => {
+                chip.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const selectedChips = document.querySelectorAll('#prioritiesContainer .chip.selected');
+                    
+                    if (this.classList.contains('selected')) {
+                        this.classList.remove('selected');
+                        
+                        // Handle "Other" option for priorities
+                        if (this.dataset.value === 'other') {
+                            const otherGroup = document.getElementById('otherPrioritiesGroup');
+                            const otherInput = document.getElementById('otherPriorities');
+                            if (otherGroup && otherInput) {
+                                otherGroup.style.display = 'none';
+                                otherInput.required = false;
+                                otherInput.value = '';
+                            }
+                        }
+                    } else if (selectedChips.length < 2) {
+                        this.classList.add('selected');
+                        
+                        // Handle "Other" option for priorities
+                        if (this.dataset.value === 'other') {
+                            const otherGroup = document.getElementById('otherPrioritiesGroup');
+                            const otherInput = document.getElementById('otherPriorities');
+                            if (otherGroup && otherInput) {
+                                otherGroup.style.display = 'block';
+                                otherInput.required = true;
+                            }
+                        }
+                    }
+                    
+                    updatePriorityChips();
+                    console.log('Priority chip clicked:', this.dataset.value, 'Selected:', this.classList.contains('selected'));
+                });
+            });
+
+            // Challenge chips (single select)
+            const challengeChips = document.querySelectorAll('#challengeContainer .chip');
+            challengeChips.forEach(chip => {
+                chip.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Remove selection from all other chips
+                    challengeChips.forEach(c => c.classList.remove('selected'));
+                    // Select this chip
+                    this.classList.add('selected');
+                    
+                    // Handle "Other" option
+                    if (this.dataset.value === 'other') {
+                        const otherGroup = document.getElementById('otherChallengeGroup');
+                        const otherInput = document.getElementById('otherChallenge');
+                        if (otherGroup && otherInput) {
+                            otherGroup.style.display = 'block';
+                            otherInput.required = true;
+                        }
+                    } else {
+                        const otherGroup = document.getElementById('otherChallengeGroup');
+                        const otherInput = document.getElementById('otherChallenge');
+                        if (otherGroup && otherInput) {
+                            otherGroup.style.display = 'none';
+                            otherInput.required = false;
+                            otherInput.value = '';
+                        }
+                    }
+                    
+                    console.log('Challenge chip clicked:', this.dataset.value, 'Selected:', this.classList.contains('selected'));
+                });
+            });
+        }
+    </script>
+</body>
+</html> 
