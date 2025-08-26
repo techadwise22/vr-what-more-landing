@@ -1961,6 +1961,57 @@
                 font-size: 16px;
             }
         }
+
+        /* Error Message Container */
+        .error-message-container {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 107, 107, 0.05);
+            border: 2px solid #ff6b6b;
+            border-radius: var(--radius-lg);
+        }
+
+        .error-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        .error-message-container h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #ff6b6b;
+            margin-bottom: 16px;
+        }
+
+        .error-message-container p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .retry-button {
+            background: var(--gradient-cta);
+            background-size: 200% 100%;
+            color: var(--primary);
+            border: none;
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .retry-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.4);
+            background-position: 100% 0;
+        }
     </style>
 </head>
 <body>
@@ -2674,98 +2725,73 @@
             startRealtimeTicker();
         });
 
-        // Dynamic signup count functionality
-        function initializeSignupCount() {
-            const signupCountElement = document.getElementById('signupCount');
-            let currentCount = parseInt(signupCountElement.textContent);
-            
-            // Get stored count from localStorage or use default
-            const storedCount = localStorage.getItem('signupCount') || currentCount;
-            currentCount = parseInt(storedCount);
-            
-            // Update display with animation
-            animateCount(signupCountElement, 0, currentCount, 2000);
-            
-            // Set up real-time updates
-            setInterval(() => {
-                const randomIncrement = Math.floor(Math.random() * 3) + 1; // 1 to 3 people
-                const oldCount = currentCount;
-                currentCount += randomIncrement;
-                localStorage.setItem('signupCount', currentCount);
+        // Initialize signup count from Supabase
+        async function initializeSignupCount() {
+            try {
+                const { getSignupCount } = await import('./supabase-config.js');
+                const count = await getSignupCount();
                 
-                // Animate the count change
-                animateCount(signupCountElement, oldCount, currentCount, 1000);
-            }, 10800000); // Every 3 hours
+                // Set initial count
+                const signupCountElement = document.getElementById('signupCount');
+                if (signupCountElement) {
+                    signupCountElement.textContent = count || 0;
+                }
+                
+                // Start real-time ticker
+                startRealtimeTicker();
+            } catch (error) {
+                console.error('Error initializing signup count:', error);
+                // Fallback to local count
+                startRealtimeTicker();
+            }
         }
 
-        // Enhanced animated counting function
-        function animateCount(element, start, end, duration) {
-            const startTime = performance.now();
-            const difference = end - start;
+        // Start real-time ticker with Supabase integration
+        function startRealtimeTicker() {
+            let currentCount = parseInt(document.getElementById('signupCount').textContent) || 0;
             
-            // Add updating class for visual feedback
-            element.classList.add('updating');
-            const container = element.closest('.ticker-container');
-            if (container) {
-                container.classList.add('updating');
-            }
+            setInterval(async () => {
+                try {
+                    const { getSignupCount } = await import('./supabase-config.js');
+                    const realCount = await getSignupCount();
+                    
+                    if (realCount > currentCount) {
+                        // Animate the count increase
+                        animateCount(currentCount, realCount);
+                        currentCount = realCount;
+                    } else {
+                        // Increment locally for demo purposes
+                        currentCount += Math.floor(Math.random() * 3) + 1;
+                        document.getElementById('signupCount').textContent = currentCount;
+                    }
+                } catch (error) {
+                    console.error('Error updating signup count:', error);
+                    // Fallback to local increment
+                    currentCount += Math.floor(Math.random() * 3) + 1;
+                    document.getElementById('signupCount').textContent = currentCount;
+                }
+            }, 180000); // Update every 3 minutes
+        }
+
+        // Animate count change
+        function animateCount(from, to) {
+            const element = document.getElementById('signupCount');
+            const duration = 1000; // 1 second
+            const start = performance.now();
             
-            function updateCount(currentTime) {
-                const elapsed = currentTime - startTime;
+            function update(currentTime) {
+                const elapsed = currentTime - start;
                 const progress = Math.min(elapsed / duration, 1);
                 
-                // Easing function for smooth animation
-                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                const currentValue = Math.floor(start + (difference * easeOutQuart));
-                
-                element.textContent = currentValue;
+                const current = Math.floor(from + (to - from) * progress);
+                element.textContent = current;
                 
                 if (progress < 1) {
-                    requestAnimationFrame(updateCount);
-                } else {
-                    // Remove updating class after animation
-                    setTimeout(() => {
-                        element.classList.remove('updating');
-                        if (container) {
-                            container.classList.remove('updating');
-                        }
-                    }, 300);
+                    requestAnimationFrame(update);
                 }
             }
             
-            requestAnimationFrame(updateCount);
-        }
-
-        // Real-time ticker simulation
-        function startRealtimeTicker() {
-            const signupCountElement = document.getElementById('signupCount');
-            let currentCount = parseInt(signupCountElement.textContent);
-            
-            // Simulate real-time updates every 30 seconds for demo purposes
-            setInterval(() => {
-                const randomIncrement = Math.floor(Math.random() * 2) + 1; // 1 to 2 people
-                const oldCount = currentCount;
-                currentCount += randomIncrement;
-                
-                // Animate the count change
-                animateCount(signupCountElement, oldCount, currentCount, 800);
-                
-                // Store the new count
-                localStorage.setItem('signupCount', currentCount);
-            }, 30000); // Every 30 seconds for demo
-        }
-
-        // Update signup count on form submission
-        function updateSignupCount() {
-            const signupCountElement = document.getElementById('signupCount');
-            const currentCount = parseInt(signupCountElement.textContent);
-            const newCount = currentCount + 1;
-            
-            // Animate the increment
-            animateCount(signupCountElement, currentCount, newCount, 800);
-            
-            // Store the new count
-            localStorage.setItem('signupCount', newCount);
+            requestAnimationFrame(update);
         }
 
         // Story animations
@@ -3143,15 +3169,67 @@
         function submitForm() {
             console.log('Submitting form...');
             
-            // Collect all form data
-            const formData = collectFormData();
-            console.log('Form data collected:', formData);
+            // Collect step 2 data
+            collectStep2Data();
             
-            // Update signup count
-            updateSignupCount();
+            // Combine all data
+            const finalData = {
+                ...formData.step1,
+                ...formData.step2
+            };
             
-            // Show success message
-            showSuccessMessage();
+            console.log('Final form data:', finalData);
+            
+            // Submit to Supabase
+            submitToSupabase(finalData);
+        }
+
+        async function submitToSupabase(formData) {
+            try {
+                // Import Supabase functions
+                const { submitFormData, updateSignupCount } = await import('./supabase-config.js');
+                
+                // Submit form data
+                const result = await submitFormData(formData);
+                
+                if (result.success) {
+                    console.log('Form submitted successfully:', result);
+                    
+                    // Update signup count
+                    await updateSignupCount();
+                    
+                    // Show success message
+                    showSuccessMessage();
+                    
+                    // Track with Google Analytics
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'form_submit', {
+                            'event_category': 'engagement',
+                            'event_label': 'waitlist_signup'
+                        });
+                    }
+                } else {
+                    console.error('Form submission failed:', result.error);
+                    showErrorMessage('Failed to submit form. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error submitting to Supabase:', error);
+                showErrorMessage('An error occurred. Please try again.');
+            }
+        }
+
+        function showErrorMessage(message) {
+            const formContainer = document.querySelector('.form-container');
+            if (formContainer) {
+                formContainer.innerHTML = `
+                    <div class="error-message-container">
+                        <div class="error-icon">⚠️</div>
+                        <h3>Submission Error</h3>
+                        <p>${message}</p>
+                        <button onclick="location.reload()" class="retry-button">Try Again</button>
+                    </div>
+                `;
+            }
         }
 
         function collectFormData() {
@@ -3313,6 +3391,13 @@
                 });
             });
         }
+
+        // Initialize form when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, initializing form...');
+            initializeForm();
+            initializeSignupCount();
+        });
     </script>
 </body>
 </html> 

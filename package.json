@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "VR What More - Join the More Movement Landing Page",
   "main": "index.html",
+  "type": "module",
   "scripts": {
     "dev": "live-server --port=3000",
     "build": "echo 'Static site - no build required'",
@@ -21,9 +22,10 @@
     "live-server": "^1.2.2"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.38.0"
+    "@supabase/supabase-js": "^2.38.0",
+    "postgres": "^3.4.3"
   },
   "engines": {
     "node": ">=16.0.0"
   }
-} 
+}
