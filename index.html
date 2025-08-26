@@ -2737,7 +2737,7 @@
                     signupCountElement.textContent = count || 0;
                 }
                 
-                // Start real-time ticker
+                // Start real-time ticker with 3-hour intervals
                 startRealtimeTicker();
             } catch (error) {
                 console.error('Error initializing signup count:', error);
@@ -2746,10 +2746,11 @@
             }
         }
 
-        // Start real-time ticker with Supabase integration
+        // Start real-time ticker with 3-hour intervals
         function startRealtimeTicker() {
             let currentCount = parseInt(document.getElementById('signupCount').textContent) || 0;
             
+            // Update every 3 hours (3 * 60 * 60 * 1000 = 10,800,000 milliseconds)
             setInterval(async () => {
                 try {
                     const { getSignupCount } = await import('./supabase-config.js');
@@ -2760,17 +2761,27 @@
                         animateCount(currentCount, realCount);
                         currentCount = realCount;
                     } else {
-                        // Increment locally for demo purposes
-                        currentCount += Math.floor(Math.random() * 3) + 1;
+                        // Increment locally for demo purposes every 3 hours
+                        const increment = Math.floor(Math.random() * 3) + 1; // 1-3 people
+                        currentCount += increment;
                         document.getElementById('signupCount').textContent = currentCount;
+                        
+                        // Update the database with the new count
+                        try {
+                            const { updateSignupCount } = await import('./supabase-config.js');
+                            await updateSignupCount();
+                        } catch (error) {
+                            console.error('Error updating signup count in database:', error);
+                        }
                     }
                 } catch (error) {
                     console.error('Error updating signup count:', error);
-                    // Fallback to local increment
-                    currentCount += Math.floor(Math.random() * 3) + 1;
+                    // Fallback to local increment every 3 hours
+                    const increment = Math.floor(Math.random() * 3) + 1;
+                    currentCount += increment;
                     document.getElementById('signupCount').textContent = currentCount;
                 }
-            }, 180000); // Update every 3 minutes
+            }, 3 * 60 * 60 * 1000); // 3 hours in milliseconds
         }
 
         // Animate count change

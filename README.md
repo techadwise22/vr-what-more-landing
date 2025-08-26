@@ -1,233 +1,286 @@
 # VR What More - Landing Page
 
-A high-converting landing page for the exclusive "More Movement" community by Vijay Raja.
+A sophisticated, ultra-luxurious landing page for "VR What More" with enterprise-grade security, comprehensive spam protection, and modern web technologies.
 
 ## 🚀 Features
 
-- **Modern Design**: Luxury black and gold theme with smooth animations
-- **Multi-step Form**: Professional 2-step form with validation
-- **Database Integration**: Supabase backend for form data storage
-- **Analytics**: Google Analytics integration
-- **Mobile Responsive**: Optimized for all devices
-- **SEO Optimized**: Meta tags and structured data
+### Core Functionality
+- **Ultra-Luxury Design**: Black and gold theme with premium animations
+- **Two-Step Form**: Professional onboarding with progress tracking
+- **Real-time Analytics**: Dynamic signup counter with Google Analytics
+- **Responsive Design**: Mobile-first approach with touch-friendly UI
 
-## 🛠️ Tech Stack
+### 🔒 Enterprise Security Features
+- **API Key Authentication**: Secure access control
+- **Rate Limiting**: Prevent abuse and DDoS attacks
+- **Input Validation & Sanitization**: XSS and injection protection
+- **Spam Protection**: 
+  - Bot detection and blocking
+  - Honeypot fields
+  - Content-based spam filtering
+  - IP blocking and throttling
+- **CAPTCHA Integration**: Google reCAPTCHA and custom challenges
+- **CSRF Protection**: Cross-site request forgery prevention
+- **Security Headers**: Comprehensive HTTP security headers
+- **Request Logging**: Security monitoring and audit trails
+
+## 🛠️ Technology Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Backend**: Supabase (PostgreSQL)
+- **Backend**: Vercel Serverless Functions
+- **Database**: Supabase (PostgreSQL)
+- **Security**: Custom middleware with industry best practices
+- **Analytics**: Google Analytics 4
 - **Deployment**: Vercel
-- **Analytics**: Google Analytics
-- **Version Control**: GitHub
 
 ## 📋 Prerequisites
 
-- Node.js (v16 or higher)
-- Git
+- Node.js 18+ 
+- npm or yarn
+- Vercel CLI
 - Supabase account
-- Vercel account
-- GitHub account
 
 ## 🚀 Quick Start
 
-### 1. Clone the Repository
-
+### 1. Clone and Install
 ```bash
-git clone https://github.com/yourusername/vr-what-more-landing.git
+git clone <repository-url>
 cd vr-what-more-landing
-```
-
-### 2. Install Dependencies
-
-```bash
 npm install
 ```
 
-### 3. Set Up Supabase
-
-1. Create a new project at [supabase.com](https://supabase.com)
-2. Go to Settings > API to get your project URL and anon key
-3. Run the database schema:
-
-```bash
-# Copy the contents of supabase-schema.sql and run it in your Supabase SQL editor
-```
-
-### 4. Configure Environment Variables
-
+### 2. Environment Setup
 Create a `.env` file in the root directory:
-
 ```env
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_ANON_KEY=your_supabase_anon_key
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=https://qyrroegdckqpquglsuru.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Security Configuration
+API_KEYS=vr-what-more-2024-secure-key,vr-what-more-backup-key-2024
+CSRF_SECRET=vr-what-more-csrf-secret-2024-ultra-secure
+CAPTCHA_TYPE=simple
+RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key
+RECAPTCHA_SITE_KEY=your_recaptcha_site_key
+BLOCKED_IPS=
+LOG_LEVEL=info
+NODE_ENV=production
 ```
 
-### 5. Run Locally
+### 3. Database Setup
+1. Go to your Supabase dashboard
+2. Navigate to SQL Editor
+3. Run the schema from `supabase-schema.sql`
 
+### 4. Local Development
 ```bash
 npm run dev
 ```
+Visit `http://localhost:3000`
 
-Visit `http://localhost:3000` to see your site.
+### 5. Security Testing
+```bash
+npm run security:test
+```
+
+## 🔒 Security Implementation
+
+### Authentication & Authorization
+- **API Key Validation**: All API requests require valid API keys
+- **Rate Limiting**: Configurable limits per IP address
+- **Request Logging**: Comprehensive audit trails
+
+### Input Protection
+- **Validation Schema**: Strict input validation for all form fields
+- **Sanitization**: Automatic HTML encoding and data cleaning
+- **Length Limits**: Prevents oversized payloads
+- **Pattern Matching**: Regex validation for specific formats
+
+### Spam Prevention
+- **Bot Detection**: User agent and behavior analysis
+- **Honeypot Fields**: Hidden fields to catch automated submissions
+- **Content Analysis**: Pattern matching for spam content
+- **IP Blocking**: Automatic blocking of suspicious IPs
+- **Time-based Limits**: Submission frequency controls
+
+### CAPTCHA Integration
+- **Google reCAPTCHA**: Enterprise-grade bot protection
+- **Custom CAPTCHA**: Fallback simple challenges
+- **Token-based**: Secure challenge/response system
+
+### Security Headers
+```javascript
+// Comprehensive security headers
+'X-Content-Type-Options': 'nosniff'
+'X-Frame-Options': 'DENY'
+'X-XSS-Protection': '1; mode=block'
+'Strict-Transport-Security': 'max-age=31536000; includeSubDomains'
+'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://qyrroegdckqpquglsuru.supabase.co;"
+'Referrer-Policy': 'strict-origin-when-cross-origin'
+'Permissions-Policy': 'geolocation=(), microphone=(), camera=()'
+```
+
+## 📡 API Endpoints
+
+### Secure Form Submission
+```
+POST /api/submit-form-secure
+Headers: 
+  x-api-key: your_api_key
+  Content-Type: application/json
+```
+
+### CAPTCHA Management
+```
+GET /api/captcha - Generate new challenge
+POST /api/captcha - Validate answer
+```
+
+### Health Check
+```
+GET /api/health - System status
+```
+
+### Signup Count
+```
+GET /api/get-signup-count - Current signup statistics
+```
+
+## 🗄️ Database Schema
+
+### Tables
+- **basic_info**: Step 1 form data
+- **professional_details**: Step 2 form data (linked)
+- **signup_stats**: Analytics and counters
+
+### Security Features
+- **Row Level Security (RLS)**: Data access control
+- **Indexes**: Performance optimization
+- **Constraints**: Data integrity
+- **Triggers**: Automatic timestamp updates
 
 ## 🚀 Deployment
 
-### Deploy to Vercel
+### Vercel Deployment
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-1. **Install Vercel CLI**:
-   ```bash
-   npm i -g vercel
-   ```
+# Login and deploy
+vercel login
+vercel --prod
+```
 
-2. **Login to Vercel**:
-   ```bash
-   vercel login
-   ```
-
-3. **Deploy**:
-   ```bash
-   vercel --prod
-   ```
-
-4. **Set Environment Variables in Vercel Dashboard**:
-   - Go to your project settings
-   - Add environment variables:
-     - `SUPABASE_URL`
-     - `SUPABASE_ANON_KEY`
-
-### Alternative: Deploy via GitHub
-
-1. **Push to GitHub**:
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push origin main
-   ```
-
-2. **Connect to Vercel**:
-   - Go to [vercel.com](https://vercel.com)
-   - Import your GitHub repository
-   - Configure environment variables
-   - Deploy
-
-## 📊 Database Schema
-
-The application uses three main tables:
-
-### `basic_info`
-- `id` (UUID, Primary Key)
-- `full_name` (VARCHAR)
-- `email` (VARCHAR, Unique)
-- `phone` (VARCHAR)
-- `created_at` (TIMESTAMP)
-- `updated_at` (TIMESTAMP)
-
-### `professional_details`
-- `id` (UUID, Primary Key)
-- `basic_info_id` (UUID, Foreign Key)
-- `primary_area` (VARCHAR)
-- `experience_years` (VARCHAR)
-- `organization` (VARCHAR)
-- `role` (VARCHAR)
-- `values` (TEXT[])
-- `priorities` (TEXT[])
-- `biggest_challenge` (VARCHAR)
-- `street_address` (TEXT)
-- `city` (VARCHAR)
-- `state` (VARCHAR)
-- `pin_code` (VARCHAR)
-- And more fields...
-
-### `signup_stats`
-- `id` (UUID, Primary Key)
-- `count` (INTEGER)
-- `created_at` (TIMESTAMP)
-- `updated_at` (TIMESTAMP)
+### Environment Variables
+Set these in your Vercel dashboard:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `API_KEYS`
+- `CSRF_SECRET`
+- `RECAPTCHA_SECRET_KEY` (optional)
+- `RECAPTCHA_SITE_KEY` (optional)
 
 ## 🔧 Configuration
 
-### Google Analytics
-
-The Google Analytics tracking code is already included in the HTML. Update the tracking ID in `index.html`:
-
-```html
-gtag('config', 'G-YKNZ4W9DFQ'); // Replace with your GA4 tracking ID
-```
-
-### Supabase Configuration
-
-Update the Supabase configuration in `supabase-config.js`:
-
+### Security Settings
 ```javascript
-const supabaseUrl = process.env.SUPABASE_URL || 'YOUR_SUPABASE_URL'
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY'
+// security-config.js
+export const securityConfig = {
+  rateLimiting: {
+    default: { limit: 100, windowMs: 15 * 60 * 1000 },
+    strict: { limit: 10, windowMs: 15 * 60 * 1000 }
+  },
+  captcha: {
+    enabled: true,
+    type: 'simple' // or 'recaptcha'
+  },
+  spamProtection: {
+    enabled: true,
+    maxSubmissionsPerMinute: 3
+  }
+};
 ```
 
-## 📱 Form Features
+### Customization
+- **Rate Limits**: Adjust in `security-config.js`
+- **Spam Patterns**: Modify in `api/middleware/spam-protection.js`
+- **Validation Rules**: Update in `api/submit-form-secure.js`
+- **Security Headers**: Configure in `vercel.json`
 
-- **Step 1**: Basic information (Name, Email, Phone)
-- **Step 2**: Professional details with multiple sections:
-  - Professional Information
-  - Values & Priorities
-  - Key Challenge
-  - Address
-  - Personal Touch
-  - Special Connection
+## 🧪 Testing
 
-## 🎨 Customization
-
-### Colors
-Update CSS variables in `index.html`:
-
-```css
-:root {
-    --primary: #0a0a0a;
-    --secondary: #1a1a1a;
-    --accent: #d4af37;
-    /* ... more variables */
-}
+### Security Tests
+```bash
+npm run security:test
 ```
 
-### Content
-- Update text content in `index.html`
-- Modify form fields in the HTML structure
-- Update footer links and social media URLs
+### Manual Testing
+1. **Form Submission**: Test with valid/invalid data
+2. **Rate Limiting**: Submit multiple requests quickly
+3. **Spam Protection**: Try filling honeypot fields
+4. **CAPTCHA**: Test challenge generation and validation
+5. **API Keys**: Test with invalid/missing keys
 
-## 🔒 Security
+### Load Testing
+```bash
+# Test rate limiting
+for i in {1..20}; do curl -H "x-api-key: your_key" https://your-domain.vercel.app/api/submit-form-secure; done
+```
 
-- Row Level Security (RLS) enabled on all tables
-- Environment variables for sensitive data
-- Input validation and sanitization
-- HTTPS enforced in production
+## 📊 Monitoring
 
-## 📈 Analytics & Monitoring
+### Security Monitoring
+- **Request Logs**: All API requests are logged
+- **Spam Detection**: Suspicious activity alerts
+- **Rate Limit Violations**: Abuse detection
+- **Error Tracking**: Failed authentication attempts
 
-- Google Analytics 4 integration
-- Form submission tracking
-- User behavior monitoring
-- Conversion tracking
+### Analytics
+- **Google Analytics**: User behavior tracking
+- **Signup Counter**: Real-time statistics
+- **Form Analytics**: Conversion tracking
 
-## 🤝 Contributing
+## 🔐 Security Best Practices
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### For Developers
+1. **Never commit API keys** to version control
+2. **Use environment variables** for sensitive data
+3. **Regular security audits** with `npm run security:audit`
+4. **Keep dependencies updated**
+5. **Monitor logs** for suspicious activity
 
-## 📄 License
+### For Production
+1. **Enable HTTPS** (automatic with Vercel)
+2. **Set up monitoring** for security events
+3. **Regular backups** of database
+4. **Update API keys** periodically
+5. **Monitor rate limits** and adjust as needed
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🆘 Troubleshooting
+
+### Common Issues
+1. **API Key Errors**: Check environment variables
+2. **Rate Limiting**: Increase limits in development
+3. **CAPTCHA Issues**: Verify reCAPTCHA configuration
+4. **Database Errors**: Check Supabase connection
+
+### Debug Mode
+```bash
+# Enable debug logging
+LOG_LEVEL=debug npm run dev
+```
 
 ## 📞 Support
 
-For support, email info@vijayraja.com or create an issue in this repository.
+For technical support or security concerns:
+- **Email**: info@vijayraja.com
+- **Documentation**: Check this README
+- **Issues**: Create GitHub issue
 
-## 🔄 Updates
+## 📄 License
 
-- **v1.0.0**: Initial release with form functionality
-- **v1.1.0**: Added Supabase integration
-- **v1.2.0**: Enhanced UI and mobile responsiveness
+MIT License - see LICENSE file for details
 
 ---
 
-Built with ❤️ by [Vijay Raja](https://vijayraja.com) 
+**Built with ❤️ by Vijay Raja | Powered by WMG** 

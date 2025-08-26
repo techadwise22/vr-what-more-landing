@@ -1,31 +1,48 @@
 {
   "name": "vr-what-more-landing",
   "version": "1.0.0",
-  "description": "VR What More - Join the More Movement Landing Page",
+  "description": "VR What More - Join the More Movement Landing Page with Advanced Security",
   "main": "index.html",
   "type": "module",
   "scripts": {
     "dev": "live-server --port=3000",
     "build": "echo 'Static site - no build required'",
     "start": "live-server --port=3000",
-    "deploy": "vercel --prod"
+    "deploy": "vercel --prod",
+    "security:audit": "npm audit && npm audit fix",
+    "security:test": "node security-test.js",
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write ."
   },
   "keywords": [
     "landing-page",
     "vijay-raja",
     "professional-growth",
-    "networking"
+    "networking",
+    "security",
+    "api-protection",
+    "spam-prevention"
   ],
   "author": "Vijay Raja",
   "license": "MIT",
-  "devDependencies": {
-    "live-server": "^1.2.2"
-  },
   "dependencies": {
-    "@supabase/supabase-js": "^2.38.0",
+    "@supabase/supabase-js": "^2.39.0",
     "postgres": "^3.4.3"
   },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.0"
+  },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
+  },
+  "security": {
+    "rate-limiting": "enabled",
+    "input-validation": "enabled",
+    "spam-protection": "enabled",
+    "csrf-protection": "enabled",
+    "captcha": "enabled",
+    "ip-blocking": "enabled"
   }
 }
