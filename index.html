@@ -1694,6 +1694,420 @@
                 margin: 1.5rem 0;
             }
         }
+
+        /* ===== MOBILE FORM OPTIMIZATIONS ===== */
+        @media (max-width: 768px) {
+            /* Form Container Mobile */
+            .form-container {
+                padding: 30px 20px;
+                margin: 0 10px;
+                border-radius: var(--radius-lg);
+                max-width: 100%;
+            }
+
+            /* Form Progress Mobile */
+            .form-progress {
+                margin-bottom: 30px;
+                gap: 12px;
+            }
+
+            .progress-step {
+                width: 36px;
+                height: 36px;
+                font-size: 12px;
+            }
+
+            .progress-connector {
+                width: 40px;
+            }
+
+            /* Form Steps Mobile */
+            .step-content {
+                margin-bottom: 30px;
+            }
+
+            .step-title {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+
+            .step-description {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            /* Form Groups Mobile */
+            .form-section-group {
+                margin-bottom: 25px;
+            }
+
+            .section-heading {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-label {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .form-input,
+            .form-select {
+                padding: 14px 16px;
+                font-size: 16px;
+                border-radius: var(--radius-md);
+                min-height: 50px;
+            }
+
+            /* Chip Container Mobile */
+            .chip-container {
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            .chip {
+                padding: 10px 16px;
+                font-size: 14px;
+                border-radius: 20px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Radio and Checkbox Mobile */
+            .radio-option,
+            .checkbox-option {
+                padding: 12px 16px;
+                margin-bottom: 10px;
+                border-radius: var(--radius-md);
+                min-height: 50px;
+            }
+
+            .radio-option input[type="radio"],
+            .checkbox-option input[type="checkbox"] {
+                width: 20px;
+                height: 20px;
+            }
+
+            .radio-option label,
+            .checkbox-option label {
+                font-size: 14px;
+                margin-left: 12px;
+            }
+
+            /* Other Input Container Mobile */
+            .other-input-container {
+                margin-top: 15px;
+            }
+
+            .other-input-container input {
+                padding: 12px 16px;
+                font-size: 16px;
+                border-radius: var(--radius-md);
+                min-height: 50px;
+            }
+
+            /* Form Actions Mobile */
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 30px;
+            }
+
+            .back-button,
+            .submit-button {
+                width: 100%;
+                padding: 16px 24px;
+                font-size: 16px;
+                min-height: 56px;
+                border-radius: var(--radius-md);
+            }
+
+            /* Privacy Note Mobile */
+            .privacy-note {
+                margin-top: 25px;
+                padding: 15px;
+                border-radius: var(--radius-md);
+            }
+
+            .privacy-note p {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            /* CAPTCHA Mobile */
+            .captcha-container {
+                margin-top: 20px;
+            }
+
+            .captcha-challenge {
+                padding: 15px;
+                border-radius: var(--radius-md);
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+
+            .captcha-input {
+                padding: 14px 16px;
+                font-size: 16px;
+                border-radius: var(--radius-md);
+                min-height: 50px;
+            }
+
+            .captcha-refresh {
+                padding: 12px 20px;
+                font-size: 14px;
+                border-radius: var(--radius-md);
+                margin-top: 10px;
+            }
+
+            /* Time Estimate Mobile */
+            .time-estimate {
+                margin-top: 20px;
+                padding: 15px;
+                border-radius: var(--radius-md);
+            }
+
+            .time-estimate p {
+                font-size: 14px;
+            }
+
+            /* Success Message Mobile */
+            .success-message {
+                padding: 30px 20px;
+                border-radius: var(--radius-lg);
+            }
+
+            .success-message h3 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .success-message p {
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .success-details {
+                margin-top: 20px;
+            }
+
+            .success-details p {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            /* Error Message Mobile */
+            .error-message-container {
+                padding: 30px 20px;
+                border-radius: var(--radius-lg);
+            }
+
+            .error-message-container h3 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            .error-message-container p {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .retry-button {
+                width: 100%;
+                padding: 16px 24px;
+                font-size: 16px;
+                min-height: 56px;
+                border-radius: var(--radius-md);
+            }
+
+            /* Error Messages Mobile */
+            .error-message {
+                font-size: 12px;
+                margin-top: 6px;
+                padding: 8px 12px;
+                border-radius: var(--radius-sm);
+            }
+
+            /* Form Validation Mobile */
+            .form-group.error .form-input,
+            .form-group.error .form-select {
+                border-color: #ef4444;
+                box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+            }
+
+            .form-group.success .form-input,
+            .form-group.success .form-select {
+                border-color: #10b981;
+                box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+            }
+        }
+
+        /* ===== SMALL MOBILE OPTIMIZATIONS ===== */
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 25px 15px;
+                margin: 0 5px;
+            }
+
+            .step-title {
+                font-size: 22px;
+            }
+
+            .step-description {
+                font-size: 15px;
+            }
+
+            .form-input,
+            .form-select {
+                padding: 12px 14px;
+                font-size: 16px;
+            }
+
+            .chip {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+
+            .back-button,
+            .submit-button {
+                padding: 14px 20px;
+                font-size: 15px;
+            }
+
+            .success-message,
+            .error-message-container {
+                padding: 25px 15px;
+            }
+        }
+
+        /* ===== MOBILE TOUCH OPTIMIZATIONS ===== */
+        @media (max-width: 768px) {
+            /* Ensure minimum touch target size */
+            .form-input,
+            .form-select,
+            .chip,
+            .radio-option,
+            .checkbox-option,
+            .back-button,
+            .submit-button,
+            .captcha-refresh {
+                min-height: 44px;
+                touch-action: manipulation;
+            }
+
+            /* Improve form scrolling */
+            .form-container {
+                -webkit-overflow-scrolling: touch;
+                scroll-behavior: smooth;
+            }
+
+            /* Better focus states for mobile */
+            .form-input:focus,
+            .form-select:focus {
+                outline: none;
+                border-color: var(--accent);
+                box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+            }
+
+            /* Improve chip selection on mobile */
+            .chip {
+                cursor: pointer;
+                user-select: none;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .chip:active {
+                transform: scale(0.95);
+            }
+
+            /* Better button feedback */
+            .back-button:active,
+            .submit-button:active {
+                transform: scale(0.98);
+            }
+
+            /* Improve dropdown visibility */
+            .form-select {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23d4af37' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+                background-position: right 12px center;
+                background-repeat: no-repeat;
+                background-size: 16px;
+                padding-right: 40px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+            }
+
+            /* Hide default select arrow on webkit */
+            .form-select::-ms-expand {
+                display: none;
+            }
+
+            /* Improve form step transitions */
+            .form-step {
+                transition: all 0.3s ease;
+            }
+
+            .form-step.active {
+                animation: slideInUp 0.4s ease-out;
+            }
+
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Better spacing for form sections */
+            .form-section-group + .form-section-group {
+                margin-top: 30px;
+                padding-top: 25px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Improve progress indicator visibility */
+            .form-progress {
+                background: rgba(255, 255, 255, 0.05);
+                padding: 15px;
+                border-radius: var(--radius-md);
+                margin-bottom: 25px;
+            }
+
+            /* Better error message visibility */
+            .error-message {
+                background: rgba(239, 68, 68, 0.1);
+                border: 1px solid rgba(239, 68, 68, 0.3);
+                color: #fca5a5;
+                padding: 10px 12px;
+                border-radius: var(--radius-sm);
+                margin-top: 8px;
+                font-size: 13px;
+            }
+
+            /* Success state styling */
+            .form-group.success .form-input,
+            .form-group.success .form-select {
+                background: rgba(16, 185, 129, 0.05);
+                border-color: #10b981;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2256,6 +2670,7 @@
             initializeSignupCount();
             animateProgress();
             generateCaptcha();
+            initializeMobileOptimizations();
         });
 
         // Initialize primary area dropdown with "Others (Specify)" handling
@@ -3278,6 +3693,70 @@
             event.preventDefault(); // Prevent default form submission
             console.log('Form submit event triggered');
             submitForm();
+        }
+
+        // Mobile-specific optimizations
+        function initializeMobileOptimizations() {
+            // Check if device is mobile
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                console.log('Initializing mobile optimizations...');
+                
+                // Improve form scrolling on mobile
+                const formContainer = document.querySelector('.form-container');
+                if (formContainer) {
+                    formContainer.style.webkitOverflowScrolling = 'touch';
+                }
+                
+                // Add touch-friendly event listeners
+                const chips = document.querySelectorAll('.chip');
+                chips.forEach(chip => {
+                    chip.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        this.style.transform = 'scale(0.95)';
+                    });
+                    
+                    chip.addEventListener('touchend', function(e) {
+                        e.preventDefault();
+                        this.style.transform = 'scale(1)';
+                        this.click();
+                    });
+                });
+                
+                // Improve input focus on mobile
+                const inputs = document.querySelectorAll('.form-input, .form-select');
+                inputs.forEach(input => {
+                    input.addEventListener('focus', function() {
+                        // Scroll to input on focus for better UX
+                        setTimeout(() => {
+                            this.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'center',
+                                inline: 'nearest'
+                            });
+                        }, 300);
+                    });
+                });
+                
+                // Prevent zoom on input focus (iOS)
+                const viewport = document.querySelector('meta[name=viewport]');
+                if (viewport) {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+                }
+                
+                // Improve button touch feedback
+                const buttons = document.querySelectorAll('.back-button, .submit-button, .captcha-refresh');
+                buttons.forEach(button => {
+                    button.addEventListener('touchstart', function() {
+                        this.style.transform = 'scale(0.98)';
+                    });
+                    
+                    button.addEventListener('touchend', function() {
+                        this.style.transform = 'scale(1)';
+                    });
+                });
+            }
         }
     </script>
 </body>
