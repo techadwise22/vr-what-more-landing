@@ -3199,7 +3199,7 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    showSuccessMessage();
+                    await showSuccessMessage();
                     
                     // Track with Google Analytics
                     if (typeof gtag !== 'undefined') {
@@ -3219,7 +3219,7 @@
                 try {
                     console.log('Attempting fallback submission...');
                     await submitDirectToSupabase(data);
-                    showSuccessMessage();
+                    await showSuccessMessage();
                 } catch (fallbackError) {
                     console.error('Fallback submission failed:', fallbackError);
                     showErrorMessage('Unable to submit form at this time. Please try again later or contact us directly.');
@@ -3365,7 +3365,7 @@
                 console.log('=== DIRECT SUPABASE SUBMISSION SUCCESSFUL ===');
                 
                 // Show success message
-                showSuccessMessage();
+                await showSuccessMessage();
                 
                 // Track with Google Analytics
                 if (typeof gtag !== 'undefined') {
@@ -3413,10 +3413,39 @@
         }
 
         // Show success message with enhanced styling and social sharing
-        function showSuccessMessage() {
+        async function showSuccessMessage() {
             const formContainer = document.querySelector('.form-container');
             const userName = formData.step1.fullName || 'there';
-            const signupCount = document.getElementById('signupCount').textContent;
+            
+            // Fetch real signup count from database
+            let realSignupCount = '249'; // Default fallback
+            try {
+                const supabaseUrl = 'https://qyrroegdckqpquglsuru.supabase.co';
+                const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5cnJvZWdkY2txcHF1Z2xzdXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyNDEzNTUsImV4cCI6MjA3MTgxNzM1NX0.NTSqSELIjJF1OSVO9IcjCA3tpzfFix7uMppvDeNejcc';
+                
+                const response = await fetch(`${supabaseUrl}/rest/v1/signup_stats?select=count&order=created_at.desc&limit=1`, {
+                    method: 'GET',
+                    headers: {
+                        'apikey': supabaseKey,
+                        'Authorization': `Bearer ${supabaseKey}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && data.length > 0) {
+                        realSignupCount = data[0].count.toString();
+                    }
+                }
+            } catch (error) {
+                console.warn('Failed to fetch real signup count:', error);
+                // Use the current display count as fallback
+                const currentCountElement = document.getElementById('signupCount');
+                if (currentCountElement) {
+                    realSignupCount = currentCountElement.textContent;
+                }
+            }
             
             formContainer.innerHTML = `
                 <div class="success-message">
@@ -3425,7 +3454,7 @@
                     <p>Thank you for joining our exclusive community. We'll be in touch soon with exciting updates about your journey to exponential growth.</p>
                     
                     <div class="success-details">
-                        <p>You're now part of <span id="successSignupCount">${signupCount}</span>+ professionals who are ready to transform their careers.</p>
+                        <p>You're now part of <span id="successSignupCount" style="font-weight: 700; color: var(--accent); font-size: 1.1em;">${realSignupCount}</span>+ professionals who are ready to transform their careers.</p>
                         
                         <div class="social-sharing-section">
                             <h4>Share the More Movement</h4>
