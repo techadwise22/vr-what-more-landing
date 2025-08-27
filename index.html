@@ -3182,7 +3182,8 @@
             const submitButton = document.getElementById('submitButton');
             
             try {
-                console.log('Submitting to Vercel API...');
+                console.log('=== SUBMITTING TO VERCEL API ===');
+                console.log('Form data:', data);
                 
                 const response = await fetch('/api/submit-form-simple', {
                     method: 'POST',
@@ -3193,13 +3194,26 @@
                 });
                 
                 console.log('API Response status:', response.status);
+                console.log('API Response headers:', Object.fromEntries(response.headers.entries()));
                 
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`);
+                // Check if response is empty
+                const responseText = await response.text();
+                console.log('API Response text:', responseText);
+                
+                if (!responseText) {
+                    throw new Error('Empty response from server');
                 }
                 
-                const result = await response.json();
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch (parseError) {
+                    console.error('JSON parsing error:', parseError);
+                    console.error('Response text that failed to parse:', responseText);
+                    throw new Error(`Invalid JSON response: ${responseText.substring(0, 200)}`);
+                }
+                
+                console.log('Parsed API result:', result);
                 
                 if (result.success) {
                     console.log('=== SUBMISSION SUCCESSFUL ===');
@@ -3231,6 +3245,10 @@
                     userMessage = error.message;
                 } else if (error.message.includes('Network') || error.message.includes('fetch')) {
                     userMessage = 'Network connection issue. Please check your internet connection and try again.';
+                } else if (error.message.includes('Empty response')) {
+                    userMessage = 'Server error: Empty response received. Please try again.';
+                } else if (error.message.includes('Invalid JSON')) {
+                    userMessage = 'Server error: Invalid response format. Please try again.';
                 } else {
                     userMessage = error.message;
                 }
