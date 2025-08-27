@@ -1719,23 +1719,41 @@
                                         <label for="primaryArea" class="form-label">Primary Area of Work</label>
                                         <select id="primaryArea" name="primaryArea" class="form-input" required>
                                             <option value="">Select your primary area</option>
-                                            <option value="Technology">Technology</option>
-                                            <option value="Finance">Finance</option>
-                                            <option value="Healthcare">Healthcare</option>
-                                            <option value="Education">Education</option>
-                                            <option value="Marketing">Marketing</option>
-                                            <option value="Sales">Sales</option>
-                                            <option value="Consulting">Consulting</option>
-                                            <option value="Manufacturing">Manufacturing</option>
-                                            <option value="Retail">Retail</option>
-                                            <option value="Real Estate">Real Estate</option>
-                                            <option value="Legal">Legal</option>
-                                            <option value="Media">Media</option>
-                                            <option value="Non-Profit">Non-Profit</option>
-                                            <option value="Government">Government</option>
-                                            <option value="Other">Other</option>
+                                            <option value="Accounting & Auditing">Accounting & Auditing</option>
+                                            <option value="Actuarial Science">Actuarial Science</option>
+                                            <option value="Banking (Commercial/Investment/Private)">Banking (Commercial/Investment/Private)</option>
+                                            <option value="Chief Financial Officer/Finance Director">Chief Financial Officer/Finance Director</option>
+                                            <option value="Client Relations & Investor Services">Client Relations & Investor Services</option>
+                                            <option value="Consulting & Advisory">Consulting & Advisory</option>
+                                            <option value="Corporate Finance">Corporate Finance</option>
+                                            <option value="Credit Analysis">Credit Analysis</option>
+                                            <option value="Data Science & Analytics">Data Science & Analytics</option>
+                                            <option value="Education & Training">Education & Training</option>
+                                            <option value="Entrepreneurship & Startup Operations">Entrepreneurship & Startup Operations</option>
+                                            <option value="Financial Administration & Coordination">Financial Administration & Coordination</option>
+                                            <option value="Financial Planning">Financial Planning</option>
+                                            <option value="Financial Technology (FinTech)">Financial Technology (FinTech)</option>
+                                            <option value="Insurance & Underwriting">Insurance & Underwriting</option>
+                                            <option value="Investment Analysis">Investment Analysis</option>
+                                            <option value="Legal & Compliance">Legal & Compliance</option>
+                                            <option value="Mergers & Acquisitions">Mergers & Acquisitions</option>
+                                            <option value="Others (Specify)">Others (Specify)</option>
+                                            <option value="Portfolio Management">Portfolio Management</option>
+                                            <option value="Public Sector/Government Roles">Public Sector/Government Roles</option>
+                                            <option value="Quantitative & Analytical Roles">Quantitative & Analytical Roles</option>
+                                            <option value="Real Estate Finance">Real Estate Finance</option>
+                                            <option value="Research Analysis">Research Analysis</option>
+                                            <option value="Risk Management">Risk Management</option>
+                                            <option value="Sales & Trading (Securities, Forex)">Sales & Trading (Securities, Forex)</option>
+                                            <option value="Taxation">Taxation</option>
+                                            <option value="Treasury Management">Treasury Management</option>
+                                            <option value="Venture Capital & Private Equity">Venture Capital & Private Equity</option>
+                                            <option value="Wealth Management">Wealth Management</option>
                                         </select>
                                         <div class="error-message" id="primaryArea-error"></div>
+                                        <div class="other-input-container" id="otherPrimaryAreaContainer" style="display: none;">
+                                            <input type="text" id="otherPrimaryArea" class="form-input" placeholder="Specify your primary area of work">
+                                        </div>
                                     </div>
                                     
                                     <div class="form-group">
@@ -1747,7 +1765,10 @@
                                             <option value="6-10">6-10 years</option>
                                             <option value="11-15">11-15 years</option>
                                             <option value="16-20">16-20 years</option>
-                                            <option value="20+">20+ years</option>
+                                            <option value="21-25">21-25 years</option>
+                                            <option value="26-30">26-30 years</option>
+                                            <option value="31-35">31-35 years</option>
+                                            <option value="35+">35+ years</option>
                                         </select>
                                         <div class="error-message" id="experience-error"></div>
                                     </div>
@@ -1948,11 +1969,42 @@
                                             <label for="batchYear" class="form-label">Batch/Year</label>
                                             <select id="batchYear" name="batchYear" class="form-input">
                                                 <option value="">Select batch year</option>
+                                                <option value="1990">1990</option>
+                                                <option value="1991">1991</option>
+                                                <option value="1992">1992</option>
+                                                <option value="1993">1993</option>
+                                                <option value="1994">1994</option>
+                                                <option value="1995">1995</option>
+                                                <option value="1996">1996</option>
+                                                <option value="1997">1997</option>
+                                                <option value="1998">1998</option>
+                                                <option value="1999">1999</option>
+                                                <option value="2000">2000</option>
+                                                <option value="2001">2001</option>
+                                                <option value="2002">2002</option>
+                                                <option value="2003">2003</option>
+                                                <option value="2004">2004</option>
+                                                <option value="2005">2005</option>
+                                                <option value="2006">2006</option>
+                                                <option value="2007">2007</option>
+                                                <option value="2008">2008</option>
+                                                <option value="2009">2009</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2019">2019</option>
                                                 <option value="2020">2020</option>
                                                 <option value="2021">2021</option>
                                                 <option value="2022">2022</option>
                                                 <option value="2023">2023</option>
                                                 <option value="2024">2024</option>
+                                                <option value="2025">2025</option>
                                                 <option value="Other">Other</option>
                                             </select>
                                         </div>
@@ -2046,6 +2098,26 @@
             generateCaptcha();
         });
 
+        // Initialize primary area dropdown with "Others (Specify)" handling
+        function initializePrimaryAreaDropdown() {
+            const primaryAreaSelect = document.getElementById('primaryArea');
+            const otherContainer = document.getElementById('otherPrimaryAreaContainer');
+            const otherInput = document.getElementById('otherPrimaryArea');
+            
+            if (primaryAreaSelect) {
+                primaryAreaSelect.addEventListener('change', function() {
+                    if (this.value === 'Others (Specify)') {
+                        otherContainer.style.display = 'block';
+                        if (otherInput) otherInput.focus();
+                    } else {
+                        otherContainer.style.display = 'none';
+                        if (otherInput) otherInput.value = '';
+                    }
+                    updateFormData();
+                });
+            }
+        }
+
         // Initialize form functionality
         function initializeForm() {
             // Initialize chips
@@ -2056,6 +2128,9 @@
             
             // Initialize checkboxes
             initializeCheckboxes();
+            
+            // Initialize primary area dropdown
+            initializePrimaryAreaDropdown();
             
             // Initialize student details toggle
             initializeStudentDetails();
