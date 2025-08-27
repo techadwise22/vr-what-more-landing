@@ -2778,6 +2778,76 @@
             padding: 16px 24px;
             font-size: 1rem;
         }
+
+        /* Force Single Column Layout for form-row */
+        .form-row {
+            flex-direction: column !important;
+            gap: 25px !important; /* Increased gap for better spacing */
+        }
+
+        /* Enhanced section spacing and breaks */
+        .form-section-group {
+            margin-bottom: 35px; /* More space between sections */
+            padding: 25px 0; /* Internal padding for visual separation */
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1); /* Subtle separator */
+        }
+
+        .form-section-group:last-of-type {
+            border-bottom: none; /* No separator for the last section */
+            margin-bottom: 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 20px; /* More space below heading */
+            color: var(--accent); /* Highlight section headings */
+        }
+
+        .form-group {
+            margin-bottom: 25px; /* Consistent spacing between individual questions */
+        }
+
+        .form-input,
+        .form-select,
+        .chip,
+        .radio-option,
+        .checkbox-option {
+            min-height: 56px; /* Larger touch targets */
+            padding: 16px; /* More padding for inputs */
+        }
+
+        .form-actions {
+            margin-top: 40px; /* More space before action buttons */
+        }
+
+        /* Ensure all form elements stack vertically */
+        .form-group,
+        .form-row .form-group {
+            width: 100% !important;
+            margin-bottom: 25px !important;
+        }
+
+        /* Chip container for better mobile layout */
+        .chip-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chip {
+            width: 100%;
+            text-align: center;
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
     </style>
 </head>
 <body>
@@ -2794,17 +2864,6 @@
         <div class="hero-content">
             <h1 class="hero-title">Progressing Towards Something Great...</h1>
             <p class="hero-subtitle">We are building this just for you.</p>
-            
-            <!-- Progress Bar in Hero -->
-            <div class="hero-progress-container">
-                <div class="hero-progress-text" id="heroProgressText">Crafting a new experience...</div>
-                <div class="hero-progress-bar-container">
-                    <div class="hero-progress-bar" id="heroProgressBar"></div>
-                </div>
-                <div class="hero-progress-percentage" id="heroProgressPercentage">0%</div>
-                <div class="join-waitlist-text" id="joinWaitlistText" style="display: none;">Join the waitlist</div>
-            </div>
-            
             <a href="#form" class="hero-cta">Join the waitlist</a>
         </div>
     </section>
@@ -3051,46 +3110,7 @@
                                 </div>
                             </div>
 
-                            <!-- Values & Priorities Section -->
-                            <div class="form-section-group">
-                                <h4 class="section-heading">Values & Priorities</h4>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">What values drive your professional decisions?</label>
-                                    <div class="chip-container">
-                                        <div class="chip" data-value="Innovation">Innovation</div>
-                                        <div class="chip" data-value="Excellence">Excellence</div>
-                                        <div class="chip" data-value="Integrity">Integrity</div>
-                                        <div class="chip" data-value="Growth">Growth</div>
-                                        <div class="chip" data-value="Leadership">Leadership</div>
-                                        <div class="chip" data-value="Collaboration">Collaboration</div>
-                                        <div class="chip" data-value="Impact">Impact</div>
-                                        <div class="chip" data-value="Learning">Learning</div>
-                                        <div class="chip" data-value="Other">Other</div>
-                                    </div>
-                                    <div class="other-input-container" id="otherValuesContainer" style="display: none;">
-                                        <input type="text" id="otherValues" class="form-input" placeholder="Specify your values">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Top 2 Professional Priorities</label>
-                                    <div class="chip-container">
-                                        <div class="chip" data-value="Career Growth">Career Growth</div>
-                                        <div class="chip" data-value="Skill Development">Skill Development</div>
-                                        <div class="chip" data-value="Networking">Networking</div>
-                                        <div class="chip" data-value="Leadership">Leadership</div>
-                                        <div class="chip" data-value="Innovation">Innovation</div>
-                                        <div class="chip" data-value="Work-Life Balance">Work-Life Balance</div>
-                                        <div class="chip" data-value="Financial Success">Financial Success</div>
-                                        <div class="chip" data-value="Impact">Impact</div>
-                                        <div class="chip" data-value="Other">Other</div>
-                                    </div>
-                                    <div class="other-input-container" id="otherPrioritiesContainer" style="display: none;">
-                                        <input type="text" id="otherPriorities" class="form-input" placeholder="Specify your priorities">
-                                    </div>
-                                </div>
-                            </div>
+
 
                             <!-- Biggest Challenge Section -->
                             <div class="form-section-group">
@@ -3358,11 +3378,16 @@
 
         // Initialize form when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== PAGE LOADED ===');
             initializeForm();
             updateSignupCount();
             animateProgress();
             generateCaptcha();
             initializeMobileOptimizations();
+            
+            // Test signup count immediately
+            console.log('Testing signup count update...');
+            updateSignupCountSimple();
         });
 
         // Initialize primary area dropdown with "Others (Specify)" handling
