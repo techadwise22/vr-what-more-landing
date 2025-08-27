@@ -397,31 +397,163 @@
         /* ===== MEMORY SECTION ===== */
         .memory-section {
             padding: var(--space-2xl) 0;
-            background: rgba(255, 255, 255, 0.02);
+            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.02) 0%, transparent 50%, rgba(212, 175, 55, 0.02) 100%);
+            pointer-events: none;
         }
 
         .memory-content {
-            max-width: 900px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 0 var(--space-md);
+            position: relative;
+            z-index: 2;
+        }
+
+        .memory-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
         }
 
         .memory-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 6vw, 3rem);
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: var(--space-lg);
-            text-align: center;
-            line-height: 1.3;
+            font-size: clamp(2.5rem, 7vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 30%, #d4af37 70%, #b8941f 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+            animation: titleShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes titleShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .memory-accent {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 0 auto;
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-accent::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: accentShimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes accentShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .memory-text-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
         }
 
         .memory-text {
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: var(--space-lg);
+            font-size: clamp(1.1rem, 3.2vw, 1.25rem);
+            color: #f0f0f0;
+            line-height: 1.8;
             text-align: center;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInStagger 0.8s ease-out forwards;
+        }
+
+        .memory-text:nth-child(1) { animation-delay: 0.2s; }
+        .memory-text:nth-child(2) { animation-delay: 0.4s; }
+        .memory-text:nth-child(3) { animation-delay: 0.6s; }
+        .memory-text:nth-child(4) { animation-delay: 0.8s; }
+        .memory-text:nth-child(5) { animation-delay: 1.0s; }
+        .memory-text:nth-child(6) { animation-delay: 1.2s; }
+        .memory-text:nth-child(7) { animation-delay: 1.4s; }
+        .memory-text:nth-child(8) { animation-delay: 1.6s; }
+        .memory-text:nth-child(9) { animation-delay: 1.8s; }
+
+        @keyframes fadeInStagger {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .highlight-emotional {
+            color: var(--accent);
+            font-weight: 700;
+            position: relative;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .highlight-emotional:hover,
+        .highlight:hover {
+            animation: emotionalGlow 0.6s ease-in-out;
+        }
+
+        @keyframes emotionalGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 30px rgba(212, 175, 55, 0.4); }
+        }
+
+        /* ===== MEMORY SECTION MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .memory-section {
+                padding: var(--space-xl) 0;
+            }
+
+            .memory-content {
+                max-width: 100%;
+                padding: 0 var(--space-sm);
+            }
+
+            .memory-title {
+                font-size: clamp(2rem, 8vw, 2.5rem);
+                margin-bottom: var(--space-sm);
+            }
+
+            .memory-text {
+                font-size: clamp(1rem, 4vw, 1.1rem);
+                line-height: 1.7;
+                text-align: left;
+            }
+
+            .memory-text-container {
+                gap: var(--space-sm);
+            }
         }
 
         /* ===== SIGNUP SECTION ===== */
@@ -1223,6 +1355,175 @@
             }
         }
 
+        /* ===== FOOTER STYLES ===== */
+        .footer {
+            background: var(--secondary);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: var(--space-xl) 0 var(--space-lg);
+            margin-top: var(--space-2xl);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 0;
+        }
+
+        .footer-tagline {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .footer-section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
+        .social-link {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all var(--transition);
+            cursor: pointer;
+            padding: 4px 0;
+        }
+
+        .social-link:not(.disabled):hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .social-link.disabled {
+            color: var(--text-muted);
+            cursor: not-allowed;
+            opacity: 0.6;
+            position: relative;
+        }
+
+        .social-link.disabled::after {
+            content: 'Coming Soon';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent);
+            color: var(--primary);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 10px;
+            font-weight: 600;
+            margin-left: 8px;
+            opacity: 0;
+            transition: opacity var(--transition);
+            white-space: nowrap;
+        }
+
+        .social-link.disabled:hover::after {
+            opacity: 1;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .contact-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition);
+        }
+
+        .contact-link:hover {
+            color: var(--accent-light);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--space-md);
+            text-align: center;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* ===== FOOTER MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .footer {
+                padding: var(--space-lg) 0 var(--space-md);
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+                text-align: center;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+
+            .social-links {
+                align-items: center;
+            }
+
+            .social-link.disabled::after {
+                display: none;
+            }
+        }
+
         /* ===== LARGE SCREEN OPTIMIZATIONS ===== */
         @media (min-width: 1200px) {
             .container {
@@ -1295,17 +1596,39 @@
     <!-- Memory Section -->
     <section class="memory-section">
         <div class="memory-content">
-            <h2 class="memory-title">You Remember How It Felt</h2>
-            <p class="memory-text">
-                Remember the day you walked into Vijay Raja's class? It was different from any other class you had before. 
-                The boring parts of the subject suddenly turned into stories you still tell your friends. The hard concepts 
-                started to feel simple and clear, like they just made sense. Think about the laughter that filled the room 
-                and the moments when everything clicked perfectly. Those classes did not just teach you stuff. They changed 
-                how you think. People always talked about his extra gyaan's that went beyond the books and his jokes that 
-                made learning fun and easy. Everyone says one thing. Once you learn from him, you never forget. Those 
-                classrooms hold memories of growth, fun, and change. And now we are bringing that experience right to you 
-                again. This is not just about learning. It is about feeling that joy and discovery all over again.
-            </p>
+            <div class="memory-header">
+                <h2 class="memory-title">You Remember How It Felt</h2>
+                <div class="memory-accent"></div>
+            </div>
+            <div class="memory-text-container">
+                <p class="memory-text">
+                    Remember the day you walked into <span class="highlight">Vijay Raja's class</span>? It was different from any other class you had before.
+                </p>
+                <p class="memory-text">
+                    The boring parts of the subject suddenly turned into <span class="highlight">stories you still tell your friends</span>.
+                </p>
+                <p class="memory-text">
+                    The hard concepts started to feel <span class="highlight">simple and clear</span>, like they just made sense.
+                </p>
+                <p class="memory-text">
+                    Think about the <span class="highlight-emotional">laughter</span> that filled the room and the moments when everything <span class="highlight-emotional">clicked perfectly</span>.
+                </p>
+                <p class="memory-text">
+                    Those classes didn't just teach you stuff. They <span class="highlight-emotional">changed how you think</span>.
+                </p>
+                <p class="memory-text">
+                    People always talked about his <span class="highlight">extra gyaan's</span> that went beyond the books and his jokes that made learning fun and easy.
+                </p>
+                <p class="memory-text">
+                    Everyone says one thing. <span class="highlight-emotional">Once you learn from him, you never forget</span>.
+                </p>
+                <p class="memory-text">
+                    Those classrooms hold memories of <span class="highlight-emotional">growth, fun, and change</span>. And now we are bringing that experience right to you again.
+                </p>
+                <p class="memory-text">
+                    This is not just about learning. It is about feeling that <span class="highlight-emotional">joy and discovery</span> all over again.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -1676,13 +1999,32 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p class="footer-text">Join the More Movement</p>
-            <div class="social-links">
-                <a href="#" class="social-link">LinkedIn</a>
-                <a href="#" class="social-link">Instagram</a>
-                <a href="#" class="social-link">YouTube</a>
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3 class="footer-title">VR What More</h3>
+                    <p class="footer-tagline">Join the More Movement</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 class="footer-section-title">Connect</h4>
+                        <div class="social-links">
+                            <span class="social-link disabled">LinkedIn</span>
+                            <span class="social-link disabled">Instagram</span>
+                            <span class="social-link disabled">YouTube</span>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4 class="footer-section-title">Contact</h4>
+                        <p class="contact-info">Questions? Write to <a href="mailto:info@vijayraja.com" class="contact-link">info@vijayraja.com</a></p>
+                    </div>
+                </div>
             </div>
-            <p class="footer-copyright">2025 by Vijay Raja. Powered by WMG</p>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 by Vijay Raja. Powered by WMG</p>
+            </div>
         </div>
     </footer>
 
