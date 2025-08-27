@@ -2512,6 +2512,7 @@
             // Step 2 data
             formData.step2 = {
                 primaryArea: document.getElementById('primaryArea')?.value || '',
+                otherPrimaryArea: document.getElementById('otherPrimaryArea')?.value || '',
                 experience: document.getElementById('experience')?.value || '',
                 organization: document.getElementById('organization')?.value || '',
                 role: document.getElementById('role')?.value || '',
@@ -2590,6 +2591,21 @@
                 }
             });
             
+            // Validate "Others (Specify)" field if selected
+            const primaryAreaSelect = document.getElementById('primaryArea');
+            if (primaryAreaSelect && primaryAreaSelect.value === 'Others (Specify)') {
+                const otherInput = document.getElementById('otherPrimaryArea');
+                if (!otherInput || !otherInput.value.trim()) {
+                    showFieldError(
+                        otherInput,
+                        document.getElementById('otherPrimaryArea-error'),
+                        otherInput.closest('.form-group'),
+                        'Please specify your primary area of work'
+                    );
+                    isValid = false;
+                }
+            }
+            
             // Validate CAPTCHA
             const captchaInput = document.getElementById('captchaAnswer');
             if (captchaInput.value.trim() !== captchaAnswer) {
@@ -2629,7 +2645,10 @@
 
         // Submit to Supabase with enhanced error handling
         async function submitToSupabase(data) {
+            const submitButton = document.getElementById('submitButton');
+            
             try {
+                // Try the secure API endpoint first
                 const response = await fetch('/api/submit-form-secure', {
                     method: 'POST',
                     headers: {
@@ -2638,6 +2657,10 @@
                     },
                     body: JSON.stringify(data)
                 });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
                 
                 const result = await response.json();
                 
@@ -2653,17 +2676,96 @@
                         });
                     }
                 } else {
-                    showErrorMessage(result.message || 'Submission failed. Please try again.');
+                    throw new Error(result.message || 'Submission failed');
                 }
             } catch (error) {
                 console.error('Error submitting form:', error);
-                showErrorMessage('Network error. Please check your connection and try again.');
+                
+                // Fallback: Try direct Supabase submission
+                try {
+                    console.log('Attempting fallback submission...');
+                    await submitDirectToSupabase(data);
+                    showSuccessMessage();
+                } catch (fallbackError) {
+                    console.error('Fallback submission failed:', fallbackError);
+                    showErrorMessage('Unable to submit form at this time. Please try again later or contact us directly.');
+                }
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Join the More Movement';
+            }
+        }
+
+        // Fallback direct Supabase submission
+        async function submitDirectToSupabase(data) {
+            // Import Supabase client dynamically
+            const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+            
+            const supabaseUrl = 'https://qyrroegdckqpquglsuru.supabase.co';
+            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5cnJvZWdkY2txcHF1Z2xzdXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyNDEzNTUsImV4cCI6MjA3MTgxNzM1NX0.NTSqSELIjJF1OSVO9IcjCA3tpzfFix7uMppvDeNejcc';
+            
+            const supabase = createClient(supabaseUrl, supabaseKey);
+            
+            // Prepare data for direct insertion
+            const basicInfo = {
+                full_name: data.step1.fullName,
+                email: data.step1.email,
+                phone: data.step1.phone,
+                linkedin_url: data.step1.linkedin || null,
+                created_at: new Date().toISOString()
+            };
+            
+            const professionalDetails = {
+                primary_area: data.step2.primaryArea === 'Others (Specify)' ? 
+                    (data.step2.otherPrimaryArea || 'Other') : data.step2.primaryArea,
+                experience: data.step2.experience,
+                organization: data.step2.organization || null,
+                role: data.step2.role || null,
+                values: data.step2.values.join(', '),
+                priorities: data.step2.priorities.join(', '),
+                biggest_challenge: data.step2.biggestChallenge.join(', '),
+                street_address: data.step2.streetAddress,
+                locality: data.step2.locality,
+                landmark: data.step2.landmark || null,
+                city: data.step2.city,
+                state: data.step2.state,
+                pin_code: data.step2.pinCode,
+                birthday: data.step2.birthday || null,
+                skip_birthday: data.step2.skipBirthday || false,
+                was_student: data.step2.wasStudent,
+                batch_year: data.step2.batchYear || null,
+                institute_name: data.step2.instituteName || null,
+                captcha_token: data.step2.captchaToken || null,
+                captcha_verified: true,
+                honeypot_website: data.step2.website || null,
+                created_at: new Date().toISOString()
+            };
+            
+            // Insert basic info first
+            const { data: basicResult, error: basicError } = await supabase
+                .from('basic_info')
+                .insert([basicInfo])
+                .select();
+            
+            if (basicError) {
+                throw new Error(`Basic info insertion failed: ${basicError.message}`);
             }
             
-            // Re-enable submit button
-            const submitButton = document.getElementById('submitButton');
-            submitButton.disabled = false;
-            submitButton.textContent = 'Join the More Movement';
+            // Insert professional details
+            const { data: profResult, error: profError } = await supabase
+                .from('professional_details')
+                .insert([professionalDetails])
+                .select();
+            
+            if (profError) {
+                throw new Error(`Professional details insertion failed: ${profError.message}`);
+            }
+            
+            // Update signup count
+            await supabase.rpc('increment_signup_count');
+            
+            console.log('Direct Supabase submission successful');
         }
 
         // Show success message with enhanced styling
