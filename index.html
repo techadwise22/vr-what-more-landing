@@ -1243,10 +1243,10 @@
         }
 
         .success-message p {
-            font-size: 16px;
             color: var(--text-secondary);
+            font-size: 1.1rem;
             line-height: 1.6;
-            margin-bottom: 24px;
+            margin-bottom: 1.5rem;
         }
 
         .success-details {
@@ -1534,6 +1534,163 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+
+        /* Social Sharing Styles */
+        .social-sharing-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 181, 46, 0.1));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .social-sharing-section h4 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .social-sharing-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .whatsapp-share {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-share:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .linkedin-share {
+            background: linear-gradient(135deg, #0077B5, #005885);
+            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3);
+        }
+
+        .linkedin-share:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 119, 181, 0.4);
+        }
+
+        .instagram-share {
+            background: linear-gradient(135deg, #E4405F, #C13584);
+            box-shadow: 0 4px 15px rgba(228, 64, 95, 0.3);
+        }
+
+        .instagram-share:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(228, 64, 95, 0.4);
+        }
+
+        .share-icon {
+            font-size: 1.2rem;
+        }
+
+        .share-text {
+            font-size: 0.85rem;
+        }
+
+        /* Countdown Timer Styles */
+        .countdown-section {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .countdown-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .countdown-text span {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .countdown-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .countdown-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #FFB52E);
+            border-radius: 3px;
+            transition: width 1s linear;
+            width: 0%;
+        }
+
+        .next-steps {
+            background: rgba(255, 215, 0, 0.05);
+            border-left: 3px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin-top: 2rem;
+        }
+
+        .next-steps p {
+            margin-bottom: 0.5rem;
+        }
+
+        .next-steps strong {
+            color: var(--accent);
+        }
+
+        /* Mobile Responsive for Social Buttons */
+        @media (max-width: 768px) {
+            .social-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .share-button {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .social-sharing-section {
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1575,19 +1732,19 @@
                 <div class="journey-step">
                     <div class="step-icon">👤</div>
                     <h3 class="step-title">You</h3>
-                    <p class="step-description">Starting point - You here</p>
+                    <p class="step-description">Starting point</p>
                 </div>
                 
                 <div class="journey-step">
                     <div class="step-icon">🚀</div>
                     <h3 class="step-title">VR What More</h3>
-                    <p class="step-description">Catalyst - VR What More</p>
+                    <p class="step-description">Catalyst</p>
                 </div>
                 
                 <div class="journey-step">
                     <div class="step-icon">📈</div>
                     <h3 class="step-title">Growth</h3>
-                    <p class="step-description">Result - Exponential growth</p>
+                    <p class="step-description">Result - Exponential Growth</p>
                 </div>
             </div>
         </div>
@@ -1705,7 +1862,7 @@
                     </form>
 
                     <!-- Step 2: Professional Details -->
-                    <form id="step2Form" class="form-step" data-step="2">
+                    <form id="step2Form" class="form-step" data-step="2" onsubmit="handleFormSubmit(event)">
                         <div class="step-content">
                             <h3 class="step-title">Professional Details</h3>
                             <p class="step-description">Help us understand your professional background and aspirations.</p>
@@ -2035,7 +2192,7 @@
                         
                         <div class="form-actions">
                             <button type="button" class="back-button" onclick="goToStep(1)">Back to Basic Info</button>
-                            <button type="submit" class="submit-button" id="submitButton">Join the More Movement</button>
+                            <button type="button" class="submit-button" id="submitButton" onclick="submitForm()">Join the More Movement</button>
                         </div>
                         
                         <div class="privacy-note">
@@ -2108,10 +2265,16 @@
                 primaryAreaSelect.addEventListener('change', function() {
                     if (this.value === 'Others (Specify)') {
                         otherContainer.style.display = 'block';
-                        if (otherInput) otherInput.focus();
+                        if (otherInput) {
+                            otherInput.focus();
+                            otherInput.required = true;
+                        }
                     } else {
                         otherContainer.style.display = 'none';
-                        if (otherInput) otherInput.value = '';
+                        if (otherInput) {
+                            otherInput.value = '';
+                            otherInput.required = false;
+                        }
                     }
                     updateFormData();
                 });
@@ -2568,79 +2731,35 @@
             return selectedValues;
         }
 
-        // Submit form with comprehensive validation
+        // Submit form with simplified validation
         function submitForm() {
+            console.log('=== FORM SUBMISSION STARTED ===');
+            
             const submitButton = document.getElementById('submitButton');
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
             
+            // Update form data
             updateFormData();
+            console.log('Form data updated:', formData);
             
-            // Validate Step 2 required fields
-            const requiredFields = [
-                'primaryArea', 'experience', 'streetAddress', 'locality', 
-                'city', 'state', 'pinCode', 'captchaAnswer'
-            ];
-            
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                const input = document.getElementById(field);
-                if (!validateField(input)) {
-                    isValid = false;
-                }
-            });
-            
-            // Validate "Others (Specify)" field if selected
-            const primaryAreaSelect = document.getElementById('primaryArea');
-            if (primaryAreaSelect && primaryAreaSelect.value === 'Others (Specify)') {
-                const otherInput = document.getElementById('otherPrimaryArea');
-                if (!otherInput || !otherInput.value.trim()) {
-                    showFieldError(
-                        otherInput,
-                        document.getElementById('otherPrimaryArea-error'),
-                        otherInput.closest('.form-group'),
-                        'Please specify your primary area of work'
-                    );
-                    isValid = false;
-                }
-            }
-            
-            // Validate CAPTCHA
-            const captchaInput = document.getElementById('captchaAnswer');
-            if (captchaInput.value.trim() !== captchaAnswer) {
-                showFieldError(
-                    captchaInput, 
-                    document.getElementById('captchaAnswer-error'),
-                    captchaInput.closest('.form-group'),
-                    'Incorrect answer. Please try again.'
-                );
-                refreshCaptcha();
-                isValid = false;
-            }
-            
-            // Check for honeypot (spam detection)
-            if (formData.step2.website && formData.step2.website.trim() !== '') {
-                console.warn('Spam detected: honeypot field filled');
-                showErrorMessage('Spam detected. Please try again.');
+            // Basic validation
+            if (!formData.step1.fullName || !formData.step1.email || !formData.step1.phone) {
+                alert('Please fill in all required fields in Step 1');
                 submitButton.disabled = false;
                 submitButton.textContent = 'Join the More Movement';
                 return;
             }
             
-            if (isValid) {
-                // Submit to Supabase
-                submitToSupabase(formData);
-            } else {
+            if (!formData.step2.primaryArea || !formData.step2.experience || !formData.step2.streetAddress) {
+                alert('Please fill in all required fields in Step 2');
                 submitButton.disabled = false;
                 submitButton.textContent = 'Join the More Movement';
-                
-                // Scroll to first error
-                const firstError = document.querySelector('.form-group.error');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+                return;
             }
+            
+            // Submit directly to Supabase
+            submitDirectToSupabase(formData);
         }
 
         // Submit to Supabase with enhanced error handling
@@ -2699,86 +2818,159 @@
 
         // Fallback direct Supabase submission
         async function submitDirectToSupabase(data) {
-            // Import Supabase client dynamically
-            const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+            const submitButton = document.getElementById('submitButton');
             
-            const supabaseUrl = 'https://qyrroegdckqpquglsuru.supabase.co';
-            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5cnJvZWdkY2txcHF1Z2xzdXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyNDEzNTUsImV4cCI6MjA3MTgxNzM1NX0.NTSqSELIjJF1OSVO9IcjCA3tpzfFix7uMppvDeNejcc';
-            
-            const supabase = createClient(supabaseUrl, supabaseKey);
-            
-            // Prepare data for direct insertion
-            const basicInfo = {
-                full_name: data.step1.fullName,
-                email: data.step1.email,
-                phone: data.step1.phone,
-                linkedin_url: data.step1.linkedin || null,
-                created_at: new Date().toISOString()
-            };
-            
-            const professionalDetails = {
-                primary_area: data.step2.primaryArea === 'Others (Specify)' ? 
-                    (data.step2.otherPrimaryArea || 'Other') : data.step2.primaryArea,
-                experience: data.step2.experience,
-                organization: data.step2.organization || null,
-                role: data.step2.role || null,
-                values: data.step2.values.join(', '),
-                priorities: data.step2.priorities.join(', '),
-                biggest_challenge: data.step2.biggestChallenge.join(', '),
-                street_address: data.step2.streetAddress,
-                locality: data.step2.locality,
-                landmark: data.step2.landmark || null,
-                city: data.step2.city,
-                state: data.step2.state,
-                pin_code: data.step2.pinCode,
-                birthday: data.step2.birthday || null,
-                skip_birthday: data.step2.skipBirthday || false,
-                was_student: data.step2.wasStudent,
-                batch_year: data.step2.batchYear || null,
-                institute_name: data.step2.instituteName || null,
-                captcha_token: data.step2.captchaToken || null,
-                captcha_verified: true,
-                honeypot_website: data.step2.website || null,
-                created_at: new Date().toISOString()
-            };
-            
-            // Insert basic info first
-            const { data: basicResult, error: basicError } = await supabase
-                .from('basic_info')
-                .insert([basicInfo])
-                .select();
-            
-            if (basicError) {
-                throw new Error(`Basic info insertion failed: ${basicError.message}`);
+            try {
+                console.log('=== STARTING DIRECT SUPABASE SUBMISSION ===');
+                
+                // Import Supabase client dynamically
+                const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                
+                const supabaseUrl = 'https://qyrroegdckqpquglsuru.supabase.co';
+                const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5cnJvZWdkY2txcHF1Z2xzdXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyNDEzNTUsImV4cCI6MjA3MTgxNzM1NX0.NTSqSELIjJF1OSVO9IcjCA3tpzfFix7uMppvDeNejcc';
+                
+                const supabase = createClient(supabaseUrl, supabaseKey);
+                
+                // Prepare basic info
+                const basicInfo = {
+                    full_name: data.step1.fullName,
+                    email: data.step1.email,
+                    phone: data.step1.phone,
+                    linkedin_url: data.step1.linkedin || null
+                };
+                
+                console.log('Inserting basic info:', basicInfo);
+                
+                // Insert basic info first
+                const { data: basicResult, error: basicError } = await supabase
+                    .from('basic_info')
+                    .insert([basicInfo])
+                    .select();
+                
+                if (basicError) {
+                    console.error('Basic info error:', basicError);
+                    throw new Error(`Basic info failed: ${basicError.message}`);
+                }
+                
+                console.log('Basic info inserted successfully:', basicResult);
+                
+                // Prepare professional details with email field
+                const professionalDetails = {
+                    email: data.step1.email, // CRITICAL: This links to basic_info
+                    primary_area: data.step2.primaryArea === 'Others (Specify)' ? 
+                        (data.step2.otherPrimaryArea || 'Other') : data.step2.primaryArea,
+                    experience: data.step2.experience,
+                    organization: data.step2.organization || null,
+                    role: data.step2.role || null,
+                    values: Array.isArray(data.step2.values) ? data.step2.values.join(', ') : (data.step2.values || ''),
+                    priorities: Array.isArray(data.step2.priorities) ? data.step2.priorities.join(', ') : (data.step2.priorities || ''),
+                    biggest_challenge: Array.isArray(data.step2.biggestChallenge) ? data.step2.biggestChallenge.join(', ') : (data.step2.biggestChallenge || ''),
+                    street_address: data.step2.streetAddress,
+                    locality: data.step2.locality,
+                    landmark: data.step2.landmark || null,
+                    city: data.step2.city,
+                    state: data.step2.state,
+                    pin_code: data.step2.pinCode,
+                    birthday: data.step2.birthday || null,
+                    skip_birthday: data.step2.skipBirthday || false,
+                    was_student: data.step2.wasStudent,
+                    batch_year: data.step2.batchYear || null,
+                    institute_name: data.step2.instituteName || null,
+                    captcha_token: data.step2.captchaToken || null,
+                    captcha_verified: true,
+                    honeypot_website: data.step2.website || null
+                };
+                
+                console.log('Inserting professional details:', professionalDetails);
+                
+                // Insert professional details
+                const { data: profResult, error: profError } = await supabase
+                    .from('professional_details')
+                    .insert([professionalDetails])
+                    .select();
+                
+                if (profError) {
+                    console.error('Professional details error:', profError);
+                    throw new Error(`Professional details failed: ${profError.message}`);
+                }
+                
+                console.log('Professional details inserted successfully:', profResult);
+                
+                // Update signup count
+                try {
+                    await supabase.rpc('increment_signup_count');
+                    console.log('Signup count updated successfully');
+                } catch (countError) {
+                    console.warn('Signup count update failed:', countError);
+                }
+                
+                console.log('=== DIRECT SUPABASE SUBMISSION SUCCESSFUL ===');
+                
+                // Show success message
+                showSuccessMessage();
+                
+                // Track with Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        'event_category': 'engagement',
+                        'event_label': 'waitlist_signup_complete',
+                        'value': 1
+                    });
+                }
+                
+            } catch (error) {
+                console.error('Direct Supabase submission failed:', error);
+                alert(`Submission failed: ${error.message}. Please try again.`);
+            } finally {
+                // Re-enable submit button
+                const submitButton = document.getElementById('submitButton');
+                submitButton.disabled = false;
+                submitButton.textContent = 'Join the More Movement';
             }
-            
-            // Insert professional details
-            const { data: profResult, error: profError } = await supabase
-                .from('professional_details')
-                .insert([professionalDetails])
-                .select();
-            
-            if (profError) {
-                throw new Error(`Professional details insertion failed: ${profError.message}`);
-            }
-            
-            // Update signup count
-            await supabase.rpc('increment_signup_count');
-            
-            console.log('Direct Supabase submission successful');
         }
 
-        // Show success message with enhanced styling
+        // Show success message with enhanced styling and social sharing
         function showSuccessMessage() {
             const formContainer = document.querySelector('.form-container');
+            const userName = formData.step1.fullName || 'there';
+            const signupCount = document.getElementById('signupCount').textContent;
+            
             formContainer.innerHTML = `
                 <div class="success-message">
                     <div class="success-icon">🎉</div>
-                    <h3>Welcome to the More Movement!</h3>
+                    <h3>Welcome to the More Movement, ${userName}!</h3>
                     <p>Thank you for joining our exclusive community. We'll be in touch soon with exciting updates about your journey to exponential growth.</p>
+                    
                     <div class="success-details">
-                        <p>You're now part of <span id="successSignupCount">${document.getElementById('signupCount').textContent}</span>+ professionals who are ready to transform their careers.</p>
-                        <div style="margin-top: 20px;">
+                        <p>You're now part of <span id="successSignupCount">${signupCount}</span>+ professionals who are ready to transform their careers.</p>
+                        
+                        <div class="social-sharing-section">
+                            <h4>Share the More Movement</h4>
+                            <p>Help others discover their path to exponential growth!</p>
+                            <div class="social-buttons">
+                                <button onclick="shareOnWhatsApp()" class="share-button whatsapp-share">
+                                    <span class="share-icon">📱</span>
+                                    <span class="share-text">Share on WhatsApp</span>
+                                </button>
+                                <button onclick="shareOnLinkedIn()" class="share-button linkedin-share">
+                                    <span class="share-icon">💼</span>
+                                    <span class="share-text">Share on LinkedIn</span>
+                                </button>
+                                <button onclick="shareOnInstagram()" class="share-button instagram-share">
+                                    <span class="share-icon">📸</span>
+                                    <span class="share-text">Share on Instagram</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="countdown-section">
+                            <p class="countdown-text">This message will close in <span id="countdown-timer">50</span> seconds</p>
+                            <div class="countdown-bar">
+                                <div class="countdown-progress" id="countdown-progress"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="next-steps">
                             <p><strong>What's next?</strong></p>
                             <p>• Check your email for a welcome message<br>
                             • Connect with us on social media<br>
@@ -2787,6 +2979,64 @@
                     </div>
                 </div>
             `;
+            
+            // Start countdown timer
+            startCountdown();
+        }
+        
+        // Social sharing functions
+        function shareOnWhatsApp() {
+            const text = encodeURIComponent(`🚀 Just joined the More Movement! Ready to transform my career with exponential growth. Join me at www.vijayraja.com #MoreMovement #CareerGrowth`);
+            const url = `https://wa.me/?text=${text}`;
+            window.open(url, '_blank');
+        }
+        
+        function shareOnLinkedIn() {
+            const text = encodeURIComponent(`🚀 Excited to announce I've joined the More Movement! Ready to embark on a journey of exponential career growth and transformation. Join the movement at www.vijayraja.com #MoreMovement #CareerGrowth #ProfessionalDevelopment`);
+            const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://www.vijayraja.com')}&title=${encodeURIComponent('Join the More Movement')}&summary=${text}`;
+            window.open(url, '_blank');
+        }
+        
+        function shareOnInstagram() {
+            // Instagram doesn't support direct URL sharing, so we'll copy to clipboard
+            const text = `🚀 Just joined the More Movement! Ready to transform my career with exponential growth. Join me at www.vijayraja.com #MoreMovement #CareerGrowth`;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Text copied to clipboard! You can now paste it in your Instagram story or post.');
+                });
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('Text copied to clipboard! You can now paste it in your Instagram story or post.');
+            }
+        }
+        
+        // Countdown timer function
+        function startCountdown() {
+            let timeLeft = 50;
+            const timerElement = document.getElementById('countdown-timer');
+            const progressElement = document.getElementById('countdown-progress');
+            
+            const countdown = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = timeLeft;
+                
+                // Update progress bar
+                const progress = ((50 - timeLeft) / 50) * 100;
+                progressElement.style.width = progress + '%';
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    // Close the success message and reload the page
+                    location.reload();
+                }
+            }, 1000);
         }
 
         // Show error message with retry functionality
@@ -2936,6 +3186,13 @@
             style.id = 'shake-styles';
             style.textContent = shakeCSS;
             document.head.appendChild(style);
+        }
+
+        // Handle form submission event
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            console.log('Form submit event triggered');
+            submitForm();
         }
     </script>
 </body>

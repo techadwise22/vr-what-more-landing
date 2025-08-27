@@ -10,32 +10,31 @@ CREATE TABLE IF NOT EXISTS basic_info (
     full_name VARCHAR(100) NOT NULL,
     email VARCHAR(254) NOT NULL UNIQUE,
     phone VARCHAR(20) NOT NULL,
-    linkedin_url VARCHAR(500), -- Added LinkedIn URL field
+    linkedin_url VARCHAR(500),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Professional Details Table (Step 2 of form)
+-- Drop the existing professional_details table if it exists
+DROP TABLE IF EXISTS professional_details CASCADE;
+
+-- Create updated Professional Details Table (Step 2 of form)
 CREATE TABLE IF NOT EXISTS professional_details (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    basic_info_id UUID NOT NULL REFERENCES basic_info(id) ON DELETE CASCADE,
+    email VARCHAR(254) NOT NULL, -- Link to basic_info by email
     primary_area VARCHAR(100) NOT NULL,
-    other_area VARCHAR(100),
-    experience_years VARCHAR(20) NOT NULL,
+    other_primary_area VARCHAR(100), -- For "Others (Specify)" option
+    experience VARCHAR(20) NOT NULL, -- Changed from experience_years to match form
     organization VARCHAR(200),
     role VARCHAR(100),
-    values TEXT[], -- Array of selected values
-    other_values VARCHAR(200),
-    priorities TEXT[], -- Array of selected priorities
-    other_priorities VARCHAR(200),
-    biggest_challenge TEXT[], -- Array of selected challenges
-    other_challenge VARCHAR(200),
+    values TEXT, -- Changed from array to text (comma-separated)
+    priorities TEXT, -- Changed from array to text (comma-separated)
+    biggest_challenge TEXT, -- Changed from array to text (comma-separated)
     street_address TEXT NOT NULL,
     locality VARCHAR(100) NOT NULL,
     landmark VARCHAR(100),
     city VARCHAR(100) NOT NULL,
     state VARCHAR(100) NOT NULL,
-    other_state VARCHAR(100),
     pin_code VARCHAR(10) NOT NULL,
     birthday DATE,
     skip_birthday BOOLEAN DEFAULT FALSE,
@@ -74,7 +73,7 @@ CREATE TABLE IF NOT EXISTS security_logs (
 -- Create indexes for performance
 CREATE INDEX IF NOT EXISTS idx_basic_info_email ON basic_info(email);
 CREATE INDEX IF NOT EXISTS idx_basic_info_created_at ON basic_info(created_at);
-CREATE INDEX IF NOT EXISTS idx_professional_details_basic_info_id ON professional_details(basic_info_id);
+CREATE INDEX IF NOT EXISTS idx_professional_details_email ON professional_details(email);
 CREATE INDEX IF NOT EXISTS idx_professional_details_created_at ON professional_details(created_at);
 CREATE INDEX IF NOT EXISTS idx_security_logs_ip_address ON security_logs(ip_address);
 CREATE INDEX IF NOT EXISTS idx_security_logs_created_at ON security_logs(created_at);
