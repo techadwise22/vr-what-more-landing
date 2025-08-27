@@ -2946,16 +2946,7 @@
         </div>
     </section>
 
-    <!-- Signup Section -->
-    <section class="signup-section">
-        <div class="signup-content">
-            <div class="signup-box">
-                <p class="signup-text">
-                    Join the <span id="signupCount">249</span> people who have already signed up for the More Movement waitlist. Be part of something big.
-                </p>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Join the Waitlist Section -->
     <section class="join-waitlist-section">
@@ -3370,14 +3361,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('=== PAGE LOADED ===');
             initializeForm();
-            updateSignupCount();
             animateProgress();
             generateCaptcha();
             initializeMobileOptimizations();
-            
-            // Test signup count immediately
-            console.log('Testing signup count update...');
-            updateSignupCountSimple();
         });
 
         // Initialize primary area dropdown with "Others (Specify)" handling
