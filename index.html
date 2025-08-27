@@ -2873,7 +2873,7 @@
         // Initialize form when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initializeForm();
-            initializeSignupCount();
+            updateSignupCount();
             animateProgress();
             generateCaptcha();
             initializeMobileOptimizations();
@@ -4091,29 +4091,7 @@
             }
         }
 
-        // Initialize signup count when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Check if we have a recent cached value (less than 5 minutes old)
-            const cachedTimestamp = localStorage.getItem('signupCountTimestamp');
-            const now = Date.now();
-            const fiveMinutes = 5 * 60 * 1000;
-            
-            if (cachedTimestamp && (now - parseInt(cachedTimestamp)) < fiveMinutes) {
-                // Use cached value if recent
-                const cachedCount = localStorage.getItem('signupCount');
-                if (cachedCount) {
-                    const signupCountElement = document.getElementById('signupCount');
-                    if (signupCountElement) {
-                        signupCountElement.textContent = cachedCount;
-                        signupCountElement.style.fontWeight = '700';
-                        signupCountElement.style.color = 'var(--accent)';
-                    }
-                }
-            } else {
-                // Fetch fresh data
-                updateSignupCount();
-            }
-        });
+
 
         // Update signup count after successful form submission
         async function updateSignupCountAfterSubmission() {
