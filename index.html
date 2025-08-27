@@ -2419,8 +2419,11 @@
             <p class="signup-text">
                 Join the <span id="signupCount">249</span> people who have already signed up for the More Movement waitlist. Be part of something big.
             </p>
-            <!-- Test button for debugging -->
-            <button onclick="testSignupCount()" style="margin-top: 10px; padding: 5px 10px; background: #d4af37; color: black; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">Test Signup Count</button>
+            <!-- Debug section -->
+            <div style="margin-top: 15px; text-align: center;">
+                <button onclick="testSignupCount()" style="padding: 8px 16px; background: #d4af37; color: black; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold; margin-right: 10px;">🔄 Test Count</button>
+                <span id="countStatus" style="font-size: 12px; color: #d4af37;">Ready to update...</span>
+            </div>
         </div>
     </section>
 
@@ -4178,6 +4181,96 @@
             console.log('=== MANUAL TEST OF SIGNUP COUNT ===');
             await updateSignupCount();
         };
+
+        // Simple and reliable signup count updater
+        function updateSignupCountSimple() {
+            console.log('=== SIMPLE SIGNUP COUNT UPDATE ===');
+            
+            // Update status
+            const statusElement = document.getElementById('countStatus');
+            if (statusElement) {
+                statusElement.textContent = 'Updating count...';
+                statusElement.style.color = '#d4af37';
+            }
+            
+            // First, try to get the element
+            const signupCountElement = document.getElementById('signupCount');
+            console.log('Element found:', !!signupCountElement);
+            
+            if (!signupCountElement) {
+                console.log('Element not found, will retry in 1 second');
+                if (statusElement) {
+                    statusElement.textContent = 'Element not found, retrying...';
+                }
+                setTimeout(updateSignupCountSimple, 1000);
+                return;
+            }
+            
+            // Element found, now fetch the count
+            fetch('https://qyrroegdckqpquglsuru.supabase.co/rest/v1/signup_stats?select=total_signups', {
+                method: 'GET',
+                headers: {
+                    'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5cnJvZWdkY2txcHF1Z2xzdXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyNDEzNTUsImV4cCI6MjA3MTgxNzM1NX0.NTSqSELIjJF1OSVO9IcjCA3tpzfFix7uMppvDeNejcc',
+                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5cnJvZWdkY2txcHF1Z2xzdXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyNDEzNTUsImV4cCI6MjA3MTgxNzM1NX0.NTSqSELIjJF1OSVO9IcjCA3tpzfFix7uMppvDeNejcc',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (statusElement) {
+                    statusElement.textContent = `API Response: ${response.status}`;
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response data:', data);
+                const signupCount = data[0]?.total_signups || 249;
+                console.log('Signup count:', signupCount);
+                
+                // Update the element
+                signupCountElement.textContent = signupCount;
+                signupCountElement.style.fontWeight = '700';
+                signupCountElement.style.color = 'var(--accent)';
+                console.log('Element updated successfully to:', signupCount);
+                
+                // Update status
+                if (statusElement) {
+                    statusElement.textContent = `Updated to: ${signupCount}`;
+                    statusElement.style.color = '#4CAF50';
+                }
+                
+                // Store in localStorage
+                localStorage.setItem('signupCount', signupCount);
+                localStorage.setItem('signupCountTimestamp', Date.now());
+            })
+            .catch(error => {
+                console.error('Error fetching signup count:', error);
+                if (statusElement) {
+                    statusElement.textContent = 'Error: ' + error.message;
+                    statusElement.style.color = '#f44336';
+                }
+                // Use cached value if available
+                const cachedCount = localStorage.getItem('signupCount');
+                if (cachedCount) {
+                    signupCountElement.textContent = cachedCount;
+                    console.log('Using cached count:', cachedCount);
+                    if (statusElement) {
+                        statusElement.textContent = `Using cached: ${cachedCount}`;
+                        statusElement.style.color = '#FF9800';
+                    }
+                }
+            });
+        }
+
+        // Start the update process immediately
+        updateSignupCountSimple();
+
+        // Also try on different events to ensure it runs
+        document.addEventListener('DOMContentLoaded', updateSignupCountSimple);
+        window.addEventListener('load', updateSignupCountSimple);
+
+        // Global test function
+        window.testSignupCount = updateSignupCountSimple;
     </script>
 </body>
 </html> 
