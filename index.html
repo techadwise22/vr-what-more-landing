@@ -2692,17 +2692,6 @@
         <div class="hero-content">
             <h1 class="hero-title">Progressing Toward Something Great…</h1>
             <p class="hero-subtitle">We are building this just for you.</p>
-            
-            <!-- Progress Bar in Hero -->
-            <div class="hero-progress-container">
-                <div class="hero-progress-text" id="heroProgressText">Crafting a new experience...</div>
-                <div class="hero-progress-bar-container">
-                    <div class="hero-progress-bar" id="heroProgressBar"></div>
-                </div>
-                <div class="hero-progress-percentage" id="heroProgressPercentage">0%</div>
-                <div class="coming-soon-text" id="comingSoonText" style="display: none;">Coming Soon</div>
-            </div>
-            
             <a href="#form" class="hero-cta">Join the waitlist</a>
         </div>
     </section>
@@ -2842,7 +2831,7 @@
                                 
                                 <div class="form-group">
                                     <label for="linkedin" class="form-label">LinkedIn Profile</label>
-                                    <input type="url" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/yourprofile" autocomplete="url">
+                                    <input type="text" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/yourprofile" autocomplete="url">
                                     <div class="error-message" id="linkedin-error"></div>
                                 </div>
                             </div>
@@ -3268,7 +3257,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             initializeForm();
             updateSignupCount();
-            animateProgress();
             generateCaptcha();
             initializeMobileOptimizations();
         });
