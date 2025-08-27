@@ -2692,6 +2692,13 @@
             display: block;
         }
 
+        .recommended {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
         .form-input,
         .form-select {
             padding: 18px 20px;
@@ -2941,18 +2948,16 @@
                                 <div class="error-message" id="email-error"></div>
                             </div>
                             
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+91 98765 43210" autocomplete="tel">
-                                    <div class="error-message" id="phone-error"></div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="linkedin" class="form-label">LinkedIn Profile</label>
-                                    <input type="text" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/yourprofile" autocomplete="url">
-                                    <div class="error-message" id="linkedin-error"></div>
-                                </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+91 98765 43210" autocomplete="tel">
+                                <div class="error-message" id="phone-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="linkedin" class="form-label">LinkedIn Profile <span class="recommended">(Recommended)</span></label>
+                                <input type="text" id="linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/yourprofile" autocomplete="url">
+                                <div class="error-message" id="linkedin-error"></div>
                             </div>
                             
                             <!-- Hidden honeypot field for spam protection -->
