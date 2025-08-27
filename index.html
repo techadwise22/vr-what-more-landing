@@ -4033,6 +4033,7 @@
         // Fetch and update dynamic signup count
         async function updateSignupCount() {
             try {
+                console.log('=== UPDATING SIGNUP COUNT ===');
                 console.log('Fetching signup count from Supabase...');
                 
                 const supabaseUrl = 'https://qyrroegdckqpquglsuru.supabase.co';
@@ -4048,18 +4049,27 @@
                     }
                 });
                 
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
+                
                 if (response.ok) {
                     const data = await response.json();
+                    console.log('Response data:', data);
                     const signupCount = data[0]?.total_signups || 249; // Fallback to 249 if no data
                     
                     console.log('Current signup count:', signupCount);
                     
                     // Update the signup count display
                     const signupCountElement = document.getElementById('signupCount');
+                    console.log('Signup count element found:', !!signupCountElement);
                     if (signupCountElement) {
+                        console.log('Updating element from', signupCountElement.textContent, 'to', signupCount);
                         signupCountElement.textContent = signupCount;
                         signupCountElement.style.fontWeight = '700';
                         signupCountElement.style.color = 'var(--accent)';
+                        console.log('Element updated successfully');
+                    } else {
+                        console.error('Signup count element not found!');
                     }
                     
                     // Store in localStorage for caching
@@ -4068,6 +4078,8 @@
                     
                 } else {
                     console.warn('Failed to fetch signup count, using cached value');
+                    const errorText = await response.text();
+                    console.error('Error response:', errorText);
                     // Use cached value if available
                     const cachedCount = localStorage.getItem('signupCount');
                     if (cachedCount) {
@@ -4091,7 +4103,12 @@
             }
         }
 
-
+        // Call updateSignupCount immediately when script loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', updateSignupCount);
+        } else {
+            updateSignupCount();
+        }
 
         // Update signup count after successful form submission
         async function updateSignupCountAfterSubmission() {
@@ -4100,6 +4117,12 @@
                 await updateSignupCount();
             }, 1000);
         }
+
+        // Global test function - can be called from browser console
+        window.testSignupCount = async function() {
+            console.log('=== MANUAL TEST OF SIGNUP COUNT ===');
+            await updateSignupCount();
+        };
     </script>
 </body>
 </html> 
