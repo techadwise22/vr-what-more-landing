@@ -71,6 +71,7 @@
             --space-lg: 32px;
             --space-xl: 48px;
             --space-2xl: 64px;
+            --space-3xl: 80px;
         }
 
         /* ===== RESET & BASE STYLES ===== */
@@ -633,6 +634,58 @@
             max-width: 600px;
             margin: 0 auto;
             padding: 0 var(--space-md);
+        }
+
+        /* ===== JOIN WAITLIST SECTION ===== */
+        .join-waitlist-section {
+            padding: var(--space-3xl) 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-waitlist-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            animation: shimmer 4s infinite;
+        }
+
+        .join-waitlist-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .join-waitlist-title {
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--accent);
+            margin-bottom: var(--space-md);
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .join-waitlist-subtitle {
+            font-size: clamp(1.3rem, 4vw, 1.6rem);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .join-waitlist-description {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            opacity: 0.8;
         }
 
         /* ===== CTA SECTIONS ===== */
@@ -2793,6 +2846,15 @@
                     Join the <span id="signupCount">249</span> people who have already signed up for the More Movement waitlist. Be part of something big.
                 </p>
             </div>
+        </div>
+    </section>
+
+    <!-- Join the Waitlist Section -->
+    <section class="join-waitlist-section">
+        <div class="join-waitlist-content">
+            <h2 class="join-waitlist-title">Join the Waitlist</h2>
+            <p class="join-waitlist-subtitle">Your Journey to Growth Starts Here</p>
+            <p class="join-waitlist-description">Be part of the transformation. Join the waitlist now.</p>
         </div>
     </section>
 
