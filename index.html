@@ -4229,12 +4229,18 @@
 
         // Animate progress bar
         function animateProgress() {
-            const progressBar = document.getElementById('heroProgressBar');
-            const progressText = document.getElementById('heroProgressText');
-            const progressPercentage = document.getElementById('heroProgressPercentage');
-            const joinWaitlistText = document.getElementById('joinWaitlistText');
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const progressPercentage = document.getElementById('progressPercentage');
             
-            if (!progressBar || !progressText || !progressPercentage) return;
+            if (!progressBar || !progressText || !progressPercentage) {
+                console.log('Progress elements not found:', {
+                    progressBar: !!progressBar,
+                    progressText: !!progressText,
+                    progressPercentage: !!progressPercentage
+                });
+                return;
+            }
             
             let progress = 0;
             const targetProgress = 99;
@@ -4261,10 +4267,9 @@
                     
                     // Show "Join the waitlist" after 99%
                     setTimeout(() => {
-                        progressText.style.display = 'none';
-                        progressBar.style.display = 'none';
-                        progressPercentage.style.display = 'none';
-                        joinWaitlistText.style.display = 'block';
+                        progressText.textContent = 'Join the waitlist';
+                        progressText.style.color = 'var(--accent)';
+                        progressText.style.fontWeight = '600';
                     }, 1000);
                 }
                 
