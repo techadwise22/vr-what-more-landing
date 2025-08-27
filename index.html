@@ -17,6 +17,9 @@
       gtag('config', 'G-YKNZ4W9DFQ');
     </script>
     
+    <!-- Supabase Client - Fallback -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -2823,13 +2826,72 @@
             try {
                 console.log('=== STARTING DIRECT SUPABASE SUBMISSION ===');
                 
-                // Import Supabase client dynamically
-                const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                // First, try to use globally available Supabase client
+                let createClient;
+                
+                if (window.supabase && window.supabase.createClient) {
+                    console.log('Using globally available Supabase client');
+                    createClient = window.supabase.createClient;
+                } else {
+                    // Try multiple CDN sources for Supabase client
+                    const cdnSources = [
+                        'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm',
+                        'https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js',
+                        'https://cdn.skypack.dev/@supabase/supabase-js@2'
+                    ];
+                    
+                    let importError = null;
+                    
+                    for (const cdnUrl of cdnSources) {
+                        try {
+                            console.log(`Trying CDN source: ${cdnUrl}`);
+                            
+                            if (cdnUrl.includes('+esm')) {
+                                // ES Module import
+                                const module = await import(cdnUrl);
+                                createClient = module.createClient;
+                            } else if (cdnUrl.includes('umd')) {
+                                // UMD import - load script tag
+                                await loadScript(cdnUrl);
+                                createClient = window.supabase.createClient;
+                            } else {
+                                // Skypack import
+                                const module = await import(cdnUrl);
+                                createClient = module.createClient;
+                            }
+                            
+                            if (createClient) {
+                                console.log(`Successfully loaded Supabase client from: ${cdnUrl}`);
+                                break;
+                            }
+                        } catch (error) {
+                            console.warn(`Failed to load from ${cdnUrl}:`, error);
+                            importError = error;
+                            continue;
+                        }
+                    }
+                    
+                    if (!createClient) {
+                        throw new Error(`Failed to load Supabase client from all sources. Last error: ${importError?.message || 'Unknown error'}`);
+                    }
+                }
                 
                 const supabaseUrl = 'https://qyrroegdckqpquglsuru.supabase.co';
                 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5cnJvZWdkY2txcHF1Z2xzdXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyNDEzNTUsImV4cCI6MjA3MTgxNzM1NX0.NTSqSELIjJF1OSVO9IcjCA3tpzfFix7uMppvDeNejcc';
                 
                 const supabase = createClient(supabaseUrl, supabaseKey);
+                
+                // Check if email already exists
+                console.log('Checking if email already exists...');
+                const { data: existingUser, error: checkError } = await supabase
+                    .from('basic_info')
+                    .select('email')
+                    .eq('email', data.step1.email)
+                    .single();
+                
+                if (existingUser) {
+                    throw new Error('This email address is already registered. Please use a different email or contact us if you need assistance.');
+                }
                 
                 // Prepare basic info
                 const basicInfo = {
@@ -2920,13 +2982,36 @@
                 
             } catch (error) {
                 console.error('Direct Supabase submission failed:', error);
-                alert(`Submission failed: ${error.message}. Please try again.`);
+                
+                // Provide user-friendly error messages
+                let userMessage = 'Submission failed. Please try again.';
+                
+                if (error.message.includes('already registered')) {
+                    userMessage = error.message;
+                } else if (error.message.includes('Failed to load Supabase client')) {
+                    userMessage = 'Network connection issue. Please check your internet connection and try again.';
+                } else if (error.message.includes('duplicate key value')) {
+                    userMessage = 'This email address is already registered. Please use a different email.';
+                }
+                
+                alert(userMessage);
             } finally {
                 // Re-enable submit button
                 const submitButton = document.getElementById('submitButton');
                 submitButton.disabled = false;
                 submitButton.textContent = 'Join the More Movement';
             }
+        }
+        
+        // Helper function to load script dynamically
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
         }
 
         // Show success message with enhanced styling and social sharing
