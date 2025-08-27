@@ -688,6 +688,48 @@
             opacity: 0.8;
         }
 
+        .join-waitlist-cta {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: var(--primary);
+            padding: 18px 36px;
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            margin-top: var(--space-lg);
+        }
+
+        .join-waitlist-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .join-waitlist-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+            border-color: var(--accent);
+        }
+
+        .join-waitlist-cta:hover::before {
+            left: 100%;
+        }
+
+        .join-waitlist-cta:active {
+            transform: translateY(-1px);
+        }
+
         /* ===== CTA SECTIONS ===== */
         .cta-section {
             padding: var(--space-2xl) 0;
@@ -2855,6 +2897,7 @@
             <h2 class="join-waitlist-title">Join the Waitlist</h2>
             <p class="join-waitlist-subtitle">Your Journey to Growth Starts Here</p>
             <p class="join-waitlist-description">Be part of the transformation. Join the waitlist now.</p>
+            <a href="#form" class="join-waitlist-cta">Join the More Movement</a>
         </div>
     </section>
 
