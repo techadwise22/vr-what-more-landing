@@ -294,7 +294,7 @@
             font-weight: 600;
         }
 
-        .coming-soon-text {
+        .join-waitlist-text {
             font-size: 1.5rem;
             color: var(--accent);
             font-weight: 700;
@@ -2692,6 +2692,17 @@
         <div class="hero-content">
             <h1 class="hero-title">Progressing Toward Something Great…</h1>
             <p class="hero-subtitle">We are building this just for you.</p>
+            
+            <!-- Progress Bar in Hero -->
+            <div class="hero-progress-container">
+                <div class="hero-progress-text" id="heroProgressText">Crafting a new experience...</div>
+                <div class="hero-progress-bar-container">
+                    <div class="hero-progress-bar" id="heroProgressBar"></div>
+                </div>
+                <div class="hero-progress-percentage" id="heroProgressPercentage">0%</div>
+                <div class="join-waitlist-text" id="joinWaitlistText" style="display: none;">Join the waitlist</div>
+            </div>
+            
             <a href="#form" class="hero-cta">Join the waitlist</a>
         </div>
     </section>
@@ -3257,6 +3268,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initializeForm();
             updateSignupCount();
+            animateProgress();
             generateCaptcha();
             initializeMobileOptimizations();
         });
@@ -4127,7 +4139,7 @@
             const progressBar = document.getElementById('heroProgressBar');
             const progressText = document.getElementById('heroProgressText');
             const progressPercentage = document.getElementById('heroProgressPercentage');
-            const comingSoonText = document.getElementById('comingSoonText');
+            const joinWaitlistText = document.getElementById('joinWaitlistText');
             
             if (!progressBar || !progressText || !progressPercentage) return;
             
@@ -4154,12 +4166,12 @@
                     progress = targetProgress;
                     clearInterval(timer);
                     
-                    // Show "Coming Soon" after 99%
+                    // Show "Join the waitlist" after 99%
                     setTimeout(() => {
                         progressText.style.display = 'none';
                         progressBar.style.display = 'none';
                         progressPercentage.style.display = 'none';
-                        comingSoonText.style.display = 'block';
+                        joinWaitlistText.style.display = 'block';
                     }, 1000);
                 }
                 
