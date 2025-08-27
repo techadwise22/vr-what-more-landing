@@ -3368,10 +3368,7 @@
                     break;
                     
                 case 'linkedin':
-                    if (value && !isValidLinkedIn(value)) {
-                        showFieldError(input, errorElement, formGroup, 'Please enter a valid LinkedIn URL');
-                        return false;
-                    }
+                    // LinkedIn validation removed - accepts any URL format
                     break;
                     
                 case 'pinCode':
@@ -3419,10 +3416,7 @@
             return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
         }
 
-        function isValidLinkedIn(url) {
-            const linkedinRegex = /^https?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9\-]+\/?$/;
-            return linkedinRegex.test(url);
-        }
+
 
         // Generate CAPTCHA challenge
         async function generateCaptcha() {
@@ -4140,43 +4134,57 @@
             requestAnimationFrame(update);
         }
 
-        // Progress bar animation
+        // Animate progress bar
         function animateProgress() {
-            const progressBar = document.getElementById('progressBar');
-            const progressPercentage = document.getElementById('progressPercentage');
-            const progressTexts = [
+            const progressBar = document.getElementById('heroProgressBar');
+            const progressText = document.getElementById('heroProgressText');
+            const progressPercentage = document.getElementById('heroProgressPercentage');
+            const comingSoonText = document.getElementById('comingSoonText');
+            
+            if (!progressBar || !progressText || !progressPercentage) return;
+            
+            let progress = 0;
+            const targetProgress = 99;
+            const duration = 3000; // 3 seconds
+            const interval = 50; // Update every 50ms
+            const increment = (targetProgress / (duration / interval));
+            
+            const progressMessages = [
                 'Crafting a new experience...',
-                'Something amazing is on the way...',
-                'Preparing for something extraordinary...',
-                'We\'re making magic happen...',
-                'Behind the scenes, greatness in progress...',
-                'Cooking up something special...',
-                'Almost ready to surprise you...',
-                'Building your next big thing...',
-                'Putting final touches in place...',
-                'Hang tight, brilliance is loading...'
+                'Building something amazing...',
+                'Preparing for greatness...',
+                'Almost ready...',
+                'Final touches...'
             ];
             
-            let currentTextIndex = 0;
-            let progress = 0;
+            let messageIndex = 0;
             
-            const textElement = document.getElementById('progressText');
-            
-            const interval = setInterval(() => {
-                progress += Math.random() * 2;
-                if (progress >= 99) {
-                    progress = 99;
-                    clearInterval(interval);
+            const timer = setInterval(() => {
+                progress += increment;
+                
+                if (progress >= targetProgress) {
+                    progress = targetProgress;
+                    clearInterval(timer);
+                    
+                    // Show "Coming Soon" after 99%
+                    setTimeout(() => {
+                        progressText.style.display = 'none';
+                        progressBar.style.display = 'none';
+                        progressPercentage.style.display = 'none';
+                        comingSoonText.style.display = 'block';
+                    }, 1000);
                 }
                 
                 progressBar.style.width = progress + '%';
-                progressPercentage.textContent = Math.floor(progress) + '%';
+                progressPercentage.textContent = Math.round(progress) + '%';
                 
-                if (Math.floor(progress) % 10 === 0) {
-                    textElement.textContent = progressTexts[currentTextIndex];
-                    currentTextIndex = (currentTextIndex + 1) % progressTexts.length;
+                // Update progress message
+                const messageProgress = Math.floor((progress / targetProgress) * progressMessages.length);
+                if (messageProgress < progressMessages.length && messageProgress !== messageIndex) {
+                    messageIndex = messageProgress;
+                    progressText.textContent = progressMessages[messageIndex];
                 }
-            }, 100);
+            }, interval);
         }
 
         // Form submission handler
