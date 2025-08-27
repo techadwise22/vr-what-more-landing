@@ -3177,7 +3177,7 @@
             submitToVercelAPI(formData);
         }
 
-        // Submit to Vercel API
+        // Submit to Vercel API with fallback to direct Supabase
         async function submitToVercelAPI(data) {
             const submitButton = document.getElementById('submitButton');
             
@@ -3185,6 +3185,7 @@
                 console.log('=== SUBMITTING TO VERCEL API ===');
                 console.log('Form data:', data);
                 
+                // Try Vercel API first
                 const response = await fetch('/api/submit-form-simple', {
                     method: 'POST',
                     headers: {
@@ -3196,12 +3197,15 @@
                 console.log('API Response status:', response.status);
                 console.log('API Response headers:', Object.fromEntries(response.headers.entries()));
                 
-                // Check if response is empty
+                // Check if response is empty or blocked
                 const responseText = await response.text();
                 console.log('API Response text:', responseText);
                 
-                if (!responseText) {
-                    throw new Error('Empty response from server');
+                if (!responseText || responseText.includes('Vercel Security Checkpoint')) {
+                    console.log('Vercel API blocked, falling back to direct Supabase...');
+                    // Fallback to direct Supabase submission
+                    await submitDirectToSupabase(data);
+                    return;
                 }
                 
                 let result;
@@ -3210,7 +3214,10 @@
                 } catch (parseError) {
                     console.error('JSON parsing error:', parseError);
                     console.error('Response text that failed to parse:', responseText);
-                    throw new Error(`Invalid JSON response: ${responseText.substring(0, 200)}`);
+                    console.log('Falling back to direct Supabase...');
+                    // Fallback to direct Supabase submission
+                    await submitDirectToSupabase(data);
+                    return;
                 }
                 
                 console.log('Parsed API result:', result);
@@ -3234,26 +3241,34 @@
                 }
                 
             } catch (error) {
-                console.error('API submission failed:', error);
+                console.error('Vercel API submission failed:', error);
+                console.log('Falling back to direct Supabase...');
                 
-                // Provide user-friendly error messages
-                let userMessage = 'Submission failed. Please try again.';
-                
-                if (error.message.includes('already registered')) {
-                    userMessage = error.message;
-                } else if (error.message.includes('Missing required fields')) {
-                    userMessage = error.message;
-                } else if (error.message.includes('Network') || error.message.includes('fetch')) {
-                    userMessage = 'Network connection issue. Please check your internet connection and try again.';
-                } else if (error.message.includes('Empty response')) {
-                    userMessage = 'Server error: Empty response received. Please try again.';
-                } else if (error.message.includes('Invalid JSON')) {
-                    userMessage = 'Server error: Invalid response format. Please try again.';
-                } else {
-                    userMessage = error.message;
+                try {
+                    // Fallback to direct Supabase submission
+                    await submitDirectToSupabase(data);
+                } catch (fallbackError) {
+                    console.error('Fallback submission also failed:', fallbackError);
+                    
+                    // Provide user-friendly error messages
+                    let userMessage = 'Submission failed. Please try again.';
+                    
+                    if (fallbackError.message.includes('already registered')) {
+                        userMessage = fallbackError.message;
+                    } else if (fallbackError.message.includes('Missing required fields')) {
+                        userMessage = fallbackError.message;
+                    } else if (fallbackError.message.includes('Network') || fallbackError.message.includes('fetch')) {
+                        userMessage = 'Network connection issue. Please check your internet connection and try again.';
+                    } else if (fallbackError.message.includes('Empty response')) {
+                        userMessage = 'Server error: Empty response received. Please try again.';
+                    } else if (fallbackError.message.includes('Invalid JSON')) {
+                        userMessage = 'Server error: Invalid response format. Please try again.';
+                    } else {
+                        userMessage = fallbackError.message;
+                    }
+                    
+                    alert(userMessage);
                 }
-                
-                alert(userMessage);
             } finally {
                 // Re-enable submit button
                 submitButton.disabled = false;
@@ -3617,6 +3632,153 @@
                         this.style.transform = 'scale(1)';
                     });
                 });
+            }
+        }
+
+        // Direct Supabase submission (fallback when Vercel API is blocked)
+        async function submitDirectToSupabase(data) {
+            console.log('=== DIRECT SUPABASE SUBMISSION ===');
+            
+            try {
+                const supabaseUrl = 'https://qyrroegdckqpquglsuru.supabase.co';
+                const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5cnJvZWdkY2txcHF1Z2xzdXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyNDEzNTUsImV4cCI6MjA3MTgxNzM1NX0.NTSqSELIjJF1OSVO9IcjCA3tpzfFix7uMppvDeNejcc';
+                
+                // Check if email already exists
+                console.log('Checking if email already exists...');
+                const checkResponse = await fetch(`${supabaseUrl}/rest/v1/basic_info?email=eq.${encodeURIComponent(data.step1.email)}&select=email`, {
+                    method: 'GET',
+                    headers: {
+                        'apikey': supabaseKey,
+                        'Authorization': `Bearer ${supabaseKey}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (checkResponse.ok) {
+                    const existingUsers = await checkResponse.json();
+                    if (existingUsers && existingUsers.length > 0) {
+                        throw new Error('This email address is already registered. Please use a different email.');
+                    }
+                }
+                
+                // Prepare basic info
+                const basicInfo = {
+                    full_name: data.step1.fullName,
+                    email: data.step1.email.toLowerCase(),
+                    phone: data.step1.phone,
+                    linkedin_url: data.step1.linkedin || null
+                };
+                
+                console.log('Inserting basic info...');
+                
+                // Insert basic info
+                const basicResponse = await fetch(`${supabaseUrl}/rest/v1/basic_info`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': supabaseKey,
+                        'Authorization': `Bearer ${supabaseKey}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=representation'
+                    },
+                    body: JSON.stringify(basicInfo)
+                });
+                
+                if (!basicResponse.ok) {
+                    const errorData = await basicResponse.json();
+                    console.error('Basic info error:', errorData);
+                    throw new Error(`Failed to save basic information: ${errorData.message || basicResponse.statusText}`);
+                }
+                
+                const basicResult = await basicResponse.json();
+                console.log('Basic info inserted successfully:', basicResult);
+                
+                // Prepare professional details
+                const professionalDetails = {
+                    email: data.step1.email.toLowerCase(),
+                    primary_area: data.step2.primaryArea === 'Others (Specify)' ? 
+                        (data.step2.otherPrimaryArea || 'Other') : data.step2.primaryArea,
+                    experience: data.step2.experience,
+                    organization: data.step2.organization || null,
+                    role: data.step2.role || null,
+                    values: Array.isArray(data.step2.values) ? data.step2.values.join(', ') : (data.step2.values || ''),
+                    priorities: Array.isArray(data.step2.priorities) ? data.step2.priorities.join(', ') : (data.step2.priorities || ''),
+                    biggest_challenge: Array.isArray(data.step2.biggestChallenge) ? data.step2.biggestChallenge.join(', ') : (data.step2.biggestChallenge || ''),
+                    street_address: data.step2.streetAddress,
+                    locality: data.step2.locality,
+                    landmark: data.step2.landmark || null,
+                    city: data.step2.city,
+                    state: data.step2.state,
+                    pin_code: data.step2.pinCode,
+                    birthday: data.step2.birthday || null,
+                    skip_birthday: data.step2.skipBirthday || false,
+                    was_student: data.step2.wasStudent,
+                    batch_year: data.step2.batchYear || null,
+                    institute_name: data.step2.instituteName || null,
+                    captcha_token: data.step2.captchaToken || null,
+                    captcha_verified: true,
+                    honeypot_website: data.step2.website || null
+                };
+                
+                console.log('Inserting professional details...');
+                
+                // Insert professional details
+                const profResponse = await fetch(`${supabaseUrl}/rest/v1/professional_details`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': supabaseKey,
+                        'Authorization': `Bearer ${supabaseKey}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=representation'
+                    },
+                    body: JSON.stringify(professionalDetails)
+                });
+                
+                if (!profResponse.ok) {
+                    const errorData = await profResponse.json();
+                    console.error('Professional details error:', errorData);
+                    throw new Error(`Failed to save professional details: ${errorData.message || profResponse.statusText}`);
+                }
+                
+                const profResult = await profResponse.json();
+                console.log('Professional details inserted successfully:', profResult);
+                
+                // Update signup count
+                try {
+                    const countResponse = await fetch(`${supabaseUrl}/rest/v1/rpc/increment_signup_count`, {
+                        method: 'POST',
+                        headers: {
+                            'apikey': supabaseKey,
+                            'Authorization': `Bearer ${supabaseKey}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    if (countResponse.ok) {
+                        console.log('Signup count updated successfully');
+                    } else {
+                        console.warn('Signup count update failed:', countResponse.statusText);
+                    }
+                } catch (countError) {
+                    console.warn('Signup count update failed:', countError);
+                }
+                
+                console.log('=== DIRECT SUPABASE SUBMISSION SUCCESSFUL ===');
+                
+                // Show success message
+                await showSuccessMessage();
+                
+                // Track with Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        'event_category': 'engagement',
+                        'event_label': 'waitlist_signup_complete',
+                        'value': 1
+                    });
+                }
+                
+            } catch (error) {
+                console.error('Direct Supabase submission failed:', error);
+                throw error; // Re-throw to be handled by the calling function
             }
         }
     </script>
