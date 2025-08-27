@@ -1702,193 +1702,283 @@
         @media (max-width: 768px) {
             /* Form Container Mobile */
             .form-container {
-                padding: 30px 20px;
-                margin: 0 10px;
+                padding: 20px 16px;
+                margin: 0 8px;
                 border-radius: var(--radius-lg);
                 max-width: 100%;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             }
 
             /* Form Progress Mobile */
             .form-progress {
-                margin-bottom: 30px;
-                gap: 12px;
+                margin-bottom: 25px;
+                gap: 10px;
             }
 
             .progress-step {
-                width: 36px;
-                height: 36px;
+                width: 32px;
+                height: 32px;
                 font-size: 12px;
             }
 
             .progress-connector {
-                width: 40px;
+                width: 30px;
             }
 
             /* Form Steps Mobile */
             .step-content {
-                margin-bottom: 30px;
+                margin-bottom: 25px;
             }
 
             .step-title {
-                font-size: 24px;
-                margin-bottom: 12px;
+                font-size: 22px;
+                margin-bottom: 10px;
+                text-align: center;
             }
 
             .step-description {
-                font-size: 16px;
-                margin-bottom: 25px;
+                font-size: 15px;
+                margin-bottom: 20px;
+                text-align: center;
+                color: var(--text-secondary);
             }
 
-            /* Form Groups Mobile */
+            /* Form Groups Mobile - Enhanced Stacking */
             .form-section-group {
-                margin-bottom: 25px;
+                margin-bottom: 30px;
+                padding: 20px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .form-section-group:last-child {
+                border-bottom: none;
             }
 
             .section-heading {
                 font-size: 18px;
-                margin-bottom: 15px;
+                margin-bottom: 20px;
+                color: var(--accent);
+                text-align: center;
+                font-weight: 600;
             }
 
+            /* Force Single Column Layout */
             .form-row {
-                flex-direction: column;
-                gap: 20px;
+                flex-direction: column !important;
+                gap: 20px !important;
             }
 
             .form-group {
-                margin-bottom: 20px;
+                margin-bottom: 25px;
+                width: 100%;
             }
 
             .form-label {
-                font-size: 14px;
-                margin-bottom: 8px;
+                font-size: 15px;
+                margin-bottom: 10px;
+                font-weight: 500;
+                color: var(--text-primary);
             }
 
             .form-input,
             .form-select {
-                padding: 14px 16px;
+                padding: 16px 18px;
                 font-size: 16px;
                 border-radius: var(--radius-md);
-                min-height: 50px;
+                min-height: 54px;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
 
-            /* Chip Container Mobile */
+            .form-input:focus,
+            .form-select:focus {
+                border-color: var(--accent);
+                box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+            }
+
+            /* Chip Container Mobile - Better Stacking */
             .chip-container {
-                gap: 8px;
+                gap: 10px;
                 flex-wrap: wrap;
-            }
-
-            .chip {
-                padding: 10px 16px;
-                font-size: 14px;
-                border-radius: 20px;
-                min-height: 44px;
-                display: flex;
-                align-items: center;
                 justify-content: center;
             }
 
-            /* Radio and Checkbox Mobile */
+            .chip {
+                padding: 12px 18px;
+                font-size: 14px;
+                border-radius: 25px;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 8px;
+                flex: 0 0 auto;
+                min-width: 120px;
+            }
+
+            /* Radio and Checkbox Mobile - Better Spacing */
+            .radio-group,
+            .checkbox-group {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+
             .radio-option,
             .checkbox-option {
-                padding: 12px 16px;
-                margin-bottom: 10px;
+                padding: 16px 18px;
+                margin-bottom: 8px;
                 border-radius: var(--radius-md);
-                min-height: 50px;
+                min-height: 54px;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transition: all var(--transition);
+            }
+
+            .radio-option:hover,
+            .checkbox-option:hover {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: var(--accent);
             }
 
             .radio-option input[type="radio"],
             .checkbox-option input[type="checkbox"] {
                 width: 20px;
                 height: 20px;
+                margin-right: 12px;
             }
 
             .radio-option label,
             .checkbox-option label {
-                font-size: 14px;
-                margin-left: 12px;
+                font-size: 15px;
+                margin-left: 0;
+                font-weight: 400;
             }
 
             /* Other Input Container Mobile */
             .other-input-container {
                 margin-top: 15px;
+                padding: 15px;
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: var(--radius-md);
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }
 
             .other-input-container input {
-                padding: 12px 16px;
+                padding: 14px 16px;
                 font-size: 16px;
                 border-radius: var(--radius-md);
                 min-height: 50px;
+                width: 100%;
             }
 
-            /* Form Actions Mobile */
+            /* Form Actions Mobile - Better Button Layout */
             .form-actions {
                 flex-direction: column;
                 gap: 15px;
                 margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .back-button,
             .submit-button {
                 width: 100%;
-                padding: 16px 24px;
+                padding: 18px 24px;
                 font-size: 16px;
                 min-height: 56px;
                 border-radius: var(--radius-md);
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .back-button {
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: var(--text-secondary);
+            }
+
+            .submit-button {
+                background: var(--gradient-primary);
+                border: none;
+                color: var(--primary);
+                box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
             }
 
             /* Privacy Note Mobile */
             .privacy-note {
                 margin-top: 25px;
-                padding: 15px;
+                padding: 18px;
                 border-radius: var(--radius-md);
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }
 
             .privacy-note p {
                 font-size: 14px;
-                line-height: 1.5;
+                line-height: 1.6;
+                color: var(--text-secondary);
             }
 
             /* CAPTCHA Mobile */
             .captcha-container {
-                margin-top: 20px;
+                margin-top: 25px;
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: var(--radius-md);
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }
 
             .captcha-challenge {
-                padding: 15px;
+                padding: 16px;
                 border-radius: var(--radius-md);
                 font-size: 16px;
                 margin-bottom: 15px;
+                background: rgba(255, 255, 255, 0.05);
+                text-align: center;
+                font-weight: 600;
             }
 
             .captcha-input {
-                padding: 14px 16px;
+                padding: 16px 18px;
                 font-size: 16px;
                 border-radius: var(--radius-md);
-                min-height: 50px;
+                min-height: 54px;
+                width: 100%;
             }
 
             .captcha-refresh {
-                padding: 12px 20px;
+                padding: 14px 20px;
                 font-size: 14px;
                 border-radius: var(--radius-md);
                 margin-top: 10px;
+                width: 100%;
             }
 
             /* Time Estimate Mobile */
             .time-estimate {
-                margin-top: 20px;
-                padding: 15px;
+                margin-top: 25px;
+                padding: 18px;
                 border-radius: var(--radius-md);
+                background: rgba(212, 175, 55, 0.1);
+                border: 1px solid rgba(212, 175, 55, 0.2);
+                text-align: center;
             }
 
             .time-estimate p {
                 font-size: 14px;
+                color: var(--accent);
+                font-weight: 500;
             }
 
             /* Success Message Mobile */
             .success-message {
                 padding: 30px 20px;
                 border-radius: var(--radius-lg);
+                text-align: center;
             }
 
             .success-message h3 {
@@ -1902,58 +1992,98 @@
                 margin-bottom: 20px;
             }
 
-            .success-details {
-                margin-top: 20px;
+            /* Social Sharing Mobile */
+            .social-sharing-section {
+                margin: 25px 0;
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: var(--radius-md);
             }
 
-            .success-details p {
+            .social-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .share-button {
+                width: 100%;
+                padding: 16px 20px;
+                font-size: 15px;
+                border-radius: var(--radius-md);
+                min-height: 50px;
+            }
+
+            /* Countdown Mobile */
+            .countdown-section {
+                margin: 20px 0;
+                padding: 15px;
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: var(--radius-md);
+            }
+
+            .countdown-text {
                 font-size: 14px;
+                text-align: center;
                 margin-bottom: 10px;
             }
 
-            /* Error Message Mobile */
-            .error-message-container {
-                padding: 30px 20px;
-                border-radius: var(--radius-lg);
-            }
-
-            .error-message-container h3 {
-                font-size: 20px;
-                margin-bottom: 15px;
-            }
-
-            .error-message-container p {
-                font-size: 16px;
-                margin-bottom: 20px;
-            }
-
-            .retry-button {
-                width: 100%;
-                padding: 16px 24px;
-                font-size: 16px;
-                min-height: 56px;
+            /* Next Steps Mobile */
+            .next-steps {
+                margin-top: 25px;
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.02);
                 border-radius: var(--radius-md);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .next-steps p {
+                font-size: 15px;
+                line-height: 1.6;
+                margin-bottom: 10px;
             }
 
             /* Error Messages Mobile */
             .error-message {
-                font-size: 12px;
-                margin-top: 6px;
+                font-size: 13px;
+                margin-top: 8px;
                 padding: 8px 12px;
                 border-radius: var(--radius-sm);
             }
 
-            /* Form Validation Mobile */
-            .form-group.error .form-input,
-            .form-group.error .form-select {
-                border-color: #ef4444;
-                box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+            /* Form Step Transitions Mobile */
+            .form-step {
+                animation: slideInUp 0.4s ease-out;
             }
 
-            .form-group.success .form-input,
-            .form-group.success .form-select {
-                border-color: #10b981;
-                box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Touch-friendly improvements */
+            .form-input,
+            .form-select,
+            .chip,
+            .radio-option,
+            .checkbox-option,
+            .back-button,
+            .submit-button {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+            }
+
+            /* Prevent zoom on input focus */
+            .form-input,
+            .form-select {
+                font-size: 16px !important;
             }
         }
 
