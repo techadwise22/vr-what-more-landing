@@ -2419,6 +2419,8 @@
             <p class="signup-text">
                 Join the <span id="signupCount">249</span> people who have already signed up for the More Movement waitlist. Be part of something big.
             </p>
+            <!-- Test button for debugging -->
+            <button onclick="testSignupCount()" style="margin-top: 10px; padding: 5px 10px; background: #d4af37; color: black; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">Test Signup Count</button>
         </div>
     </section>
 
@@ -4034,7 +4036,20 @@
         async function updateSignupCount() {
             try {
                 console.log('=== UPDATING SIGNUP COUNT ===');
-                console.log('Fetching signup count from Supabase...');
+                
+                // Wait for DOM to be ready
+                if (document.readyState !== 'complete') {
+                    console.log('DOM not ready, waiting...');
+                    await new Promise(resolve => {
+                        if (document.readyState === 'complete') {
+                            resolve();
+                        } else {
+                            window.addEventListener('load', resolve);
+                        }
+                    });
+                }
+                
+                console.log('DOM ready, fetching signup count from Supabase...');
                 
                 const supabaseUrl = 'https://qyrroegdckqpquglsuru.supabase.co';
                 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5cnJvZWdkY2txcHF1Z2xzdXJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYyNDEzNTUsImV4cCI6MjA3MTgxNzM1NX0.NTSqSELIjJF1OSVO9IcjCA3tpzfFix7uMppvDeNejcc';
@@ -4059,22 +4074,44 @@
                     
                     console.log('Current signup count:', signupCount);
                     
-                    // Update the signup count display
-                    const signupCountElement = document.getElementById('signupCount');
-                    console.log('Signup count element found:', !!signupCountElement);
-                    if (signupCountElement) {
-                        console.log('Updating element from', signupCountElement.textContent, 'to', signupCount);
-                        signupCountElement.textContent = signupCount;
-                        signupCountElement.style.fontWeight = '700';
-                        signupCountElement.style.color = 'var(--accent)';
-                        console.log('Element updated successfully');
-                    } else {
-                        console.error('Signup count element not found!');
-                    }
+                    // Update the signup count display with retry mechanism
+                    let retryCount = 0;
+                    const maxRetries = 5;
                     
-                    // Store in localStorage for caching
-                    localStorage.setItem('signupCount', signupCount);
-                    localStorage.setItem('signupCountTimestamp', Date.now());
+                    const updateElement = () => {
+                        const signupCountElement = document.getElementById('signupCount');
+                        console.log('Signup count element found:', !!signupCountElement);
+                        
+                        if (signupCountElement) {
+                            console.log('Updating element from', signupCountElement.textContent, 'to', signupCount);
+                            signupCountElement.textContent = signupCount;
+                            signupCountElement.style.fontWeight = '700';
+                            signupCountElement.style.color = 'var(--accent)';
+                            console.log('Element updated successfully');
+                            
+                            // Store in localStorage for caching
+                            localStorage.setItem('signupCount', signupCount);
+                            localStorage.setItem('signupCountTimestamp', Date.now());
+                            return true;
+                        } else {
+                            console.warn(`Element not found, retry ${retryCount + 1}/${maxRetries}`);
+                            return false;
+                        }
+                    };
+                    
+                    // Try to update immediately
+                    if (!updateElement() && retryCount < maxRetries) {
+                        // If element not found, retry with delays
+                        const retryInterval = setInterval(() => {
+                            retryCount++;
+                            if (updateElement() || retryCount >= maxRetries) {
+                                clearInterval(retryInterval);
+                                if (retryCount >= maxRetries) {
+                                    console.error('Failed to find signup count element after', maxRetries, 'retries');
+                                }
+                            }
+                        }, 500); // Retry every 500ms
+                    }
                     
                 } else {
                     console.warn('Failed to fetch signup count, using cached value');
@@ -4103,12 +4140,30 @@
             }
         }
 
-        // Call updateSignupCount immediately when script loads
-        if (document.readyState === 'loading') {
+        // Multiple ways to ensure the function runs
+        function initializeSignupCountWithRetry() {
+            // Method 1: If DOM is already loaded
+            if (document.readyState === 'complete') {
+                console.log('DOM already complete, running immediately');
+                updateSignupCount();
+            }
+            // Method 2: Wait for DOM content loaded
+            else if (document.readyState === 'interactive') {
+                console.log('DOM interactive, running immediately');
+                updateSignupCount();
+            }
+            // Method 3: Wait for load event
+            else {
+                console.log('DOM loading, waiting for load event');
+                window.addEventListener('load', updateSignupCount);
+            }
+            
+            // Method 4: Also try on DOMContentLoaded
             document.addEventListener('DOMContentLoaded', updateSignupCount);
-        } else {
-            updateSignupCount();
         }
+
+        // Initialize immediately
+        initializeSignupCountWithRetry();
 
         // Update signup count after successful form submission
         async function updateSignupCountAfterSubmission() {
